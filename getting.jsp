@@ -9,12 +9,12 @@ int class_people = 0;
 
  try{
 					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/school?characterEncoding=UTF-8&serverTimezone=UTC", "root", "sim6769");
+					Connection con = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
 					Statement stm = con.createStatement();
   String sqlStr = "select * from class where class_id = '"+ request.getParameter("get")+"'";
   ResultSet rset = stm.executeQuery(sqlStr);
 					if(rset.next()){
-						MAX = rset.getInt("MAX");
+						MAX = rset.getInt("class_max_people");
 						class_people = rset.getInt("class_people");
 					}
 					if(MAX <= class_people){
