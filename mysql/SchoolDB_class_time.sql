@@ -27,9 +27,8 @@ CREATE TABLE `class_time` (
   `start_time` int(11) DEFAULT NULL,
   `end_time` int(11) DEFAULT NULL,
   `day_of_class` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`class_id`),
   CONSTRAINT `class_time_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `class` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

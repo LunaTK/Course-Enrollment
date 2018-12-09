@@ -28,7 +28,7 @@ CREATE TABLE `student` (
   `allowed_credit` int(11) DEFAULT NULL,
   `student_year` int(11) DEFAULT NULL,
   PRIMARY KEY (`student_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
