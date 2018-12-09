@@ -19,8 +19,8 @@
         String uid = request.getParameter("id");
         String upw = request.getParameter("pw");
 
-        String studentQuery = "SELECT * FROM student where student_number = " + uid + " student_pswd = "+ upw + ";";
-        String adminQuery = "SELECT * FROM admin where id_admin = \" + uid + \" pswd_admin = \"+ upw + \";";
+        String studentQuery = "SELECT * FROM student where student_number = '" + uid + "' and student_pswd = '"+ upw + "';";
+        String adminQuery = "SELECT * FROM admin where id_admin = '" + uid + "' and pswd_admin = '"+ upw + "';";
         
         stmt = conn.createStatement();
         studentRS = stmt.executeQuery(studentQuery);
@@ -36,6 +36,9 @@
             redirectUrl = "index_student.html?id=" + id; // 학생 메인 페이지
         } else if (adminRS.next()) {
             redirectUrl = "admin.html"; // 어드민 페이지
+        } else {
+            out.println("<script>alert('로그인 실패');</script>");
+            redirectUrl = "index.html";
         }
 
 
