@@ -17,7 +17,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>시간표</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" media="screen" href="timetable.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="js/timetable.css" />
 
 <body>
     <%
@@ -123,7 +123,7 @@
     <table id="time-table">
 
     </table>
-    <script src="timetable.js"></script>
+    <script src="js/timetable.js"></script>
 </body>
 
 </html>

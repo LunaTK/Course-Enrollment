@@ -1,41 +1,3 @@
-var lectures = [
-    {
-        name: "정보보호개론",
-        room: "26312",
-        lectureTimes: [
-            {
-                day: 0,
-                start: { hour: 9, minute: 0 },
-                finish: { hour: 10, minute: 15 }
-            },
-            {
-                day: 2,
-                start: { hour: 10, minute: 30 },
-                finish: { hour: 11, minute: 45 }
-            }
-        ],
-        color: "#ea80fc",
-        professor: "최형기"
-    },
-    {
-        name: "알고리즘개론",
-        room: "26310",
-        lectureTimes: [
-            {
-                day: 3,
-                start: { hour: 9, minute: 0 },
-                finish: { hour: 10, minute: 15 }
-            },
-            {
-                day: 1,
-                start: { hour: 10, minute: 30 },
-                finish: { hour: 11, minute: 45 }
-            }
-        ],
-        color: "#ffe082",
-        professor: "조대호"
-    }
-];
 function getRandomColor() {
     var letters = "0123456789ABCDEF";
     var color = "#";
@@ -44,8 +6,10 @@ function getRandomColor() {
     }
     return color;
 }
+
 function buildTimeTable() {
     var table = document.getElementById("time-table");
+
     function buildForm() {
         var th = document.createElement("tr");
         for (var _i = 0, _a = ["", "Mon", "Tue", "Wed", "Thur", "Fri"]; _i < _a.length; _i++) {
@@ -70,6 +34,7 @@ function buildTimeTable() {
             table.appendChild(tr);
         }
     }
+
     function fillUpTable() {
         for (var _i = 0, lectures_1 = lectures; _i < lectures_1.length; _i++) {
             var lecture = lectures_1[_i];
@@ -82,10 +47,10 @@ function buildTimeTable() {
                 var container = document.getElementById("cell-" + col + "-" + row);
                 var ele = document.createElement("div");
                 var heightRatio = Math.round(((lectureTime.finish.hour * 60 +
-                    lectureTime.finish.minute -
-                    lectureTime.start.hour * 60 -
-                    lectureTime.start.minute) *
-                    100) /
+                            lectureTime.finish.minute -
+                            lectureTime.start.hour * 60 -
+                            lectureTime.start.minute) *
+                        100) /
                     60);
                 console.log(heightRatio);
                 ele.classList.add("lecture-cell");
@@ -94,7 +59,7 @@ function buildTimeTable() {
                 ele.style.top = Math.round((lectureTime.start.minute * 100) / 60) + "%";
                 ele.innerText =
                     lecture.name + "\n" + lecture.room +
-                        (lecture.professor ? "\n" + lecture.professor : "");
+                    (lecture.professor ? "\n" + lecture.professor : "");
                 container.appendChild(ele);
             }
         }
