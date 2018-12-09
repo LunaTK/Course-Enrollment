@@ -1,4 +1,4 @@
-﻿<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html;charset=utf-8"
     pageEncoding="utf-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
@@ -43,35 +43,12 @@ background-color: #84B1ED; }
 			<table>
 				<tr><td><label>강의명</label></td>
 				<td><input name="class_name" type="string"></td></tr>
+				<tr><td><label>학년</label></td>
+				<td><input name="class_year" type="string"></td></tr>
 			</table>
 			<button type="submit" class="register_btn">검색 </button>
 		</form>
-		<%
-		int i = 0;
-				String in_class_name = request.getParameter("class_name");
-				Connection conn = null;
-				ResultSet rs = null;
-				Statement stmt = null;
-				String sqlStr = null;
-				PreparedStatement preparedStmt = null;
-				try{
-					Class.forName("com.mysql.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/school?characterEncoding=UTF-8&serverTimezone=UTC", "root", "sim6769");
-					stmt = conn.createStatement();
-
-					String query = "SELECT * FROM class";
-					rs = stmt.executeQuery(query);
-					while(rs.next()){
-						if(rs.getString(6).equals(in_class_name)){
-							i=1;
-							break;
-						}
-					}
-					if(i == 0){
-						rs.previous();
-					}
-		%>
-	<form action="getting.jsp" method="post">
+		<form action="getting.jsp" method="post">
 	<table id = "list" border="3" cellspacing="3">
 	<tr class>
 	<th> 강의명 </th>
@@ -87,6 +64,27 @@ background-color: #84B1ED; }
 		<th> 신청하기 </th>  
 		<th> 담기 </th>  
 	</tr>	
+		<%
+		int i = 0;
+				String in_class_name = request.getParameter("class_name");
+				String in_class_year = request.getParameter("class_year");
+				Connection conn = null;
+				ResultSet rs = null;
+				Statement stmt = null;
+				String sqlStr = null;
+				PreparedStatement preparedStmt = null;
+			if((in_class_name != null) || (in_class_year != null) ){
+				try{
+					Class.forName("com.mysql.jdbc.Driver");
+					conn = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
+					stmt = conn.createStatement();
+				
+					String query = "SELECT * FROM class";
+					rs = stmt.executeQuery(query);
+					while(rs.next()){
+						if((rs.getString(6).equals(in_class_name))|| (rs.getString(9).equals(in_class_year))){
+		%>
+	
 		<tr>
 	<td><%=rs.getString(6)%></td>
 	<td><%=rs.getString(7)%></td>
@@ -106,6 +104,8 @@ background-color: #84B1ED; }
 	</td>
 	</tr>
 		<%
+						}
+					}
   rs.close();        // ResultSet exit
   stmt.close();     // Statement exit
   conn.close();    // Connection exit
@@ -113,6 +113,7 @@ background-color: #84B1ED; }
 catch (SQLException e) {
       out.println("err:"+e.toString());
 } 
+			}
 %>
 	</div>
 </body>
