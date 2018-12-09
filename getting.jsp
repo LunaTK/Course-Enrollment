@@ -11,6 +11,7 @@ int class_people = 0;
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
 					Statement stm = con.createStatement();
+					
   String sqlStr = "select * from class where class_id = '"+ request.getParameter("get")+"'";
   ResultSet rset = stm.executeQuery(sqlStr);
 					if(rset.next()){
