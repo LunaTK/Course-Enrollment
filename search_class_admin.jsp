@@ -41,10 +41,11 @@ background-color: #84B1ED; }
 	</div>
 	<div id="nav">
 		<ul>
+			<li> <a href="register_student.jsp">학생 등록</a></li>
+			<li> <a href="register_class.jsp">수업 등록 </a></li>
 			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
-			<li> <a href="list_class.jsp">수업 목록 </a></li>
-			<li> <a href="search_class.jsp">수업 검색</a></li>
-			<li> <a href="wish_list.jsp">책가방</a></li>	
+			<li> <a href="list_class_admin.jsp">수업 목록 </a></li>
+			<li> <a href="search_class_admin.jsp">수업 검색</a></li>
 		</ul>
 	</div>
 	<div id="content">
