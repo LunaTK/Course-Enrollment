@@ -8,7 +8,7 @@
     ResultSet studentRS = null;
     ResultSet adminRS = null;
     Statement stmt = null;
-    String redirectUrl = "javascript:alert('로그인 실패')";
+    String redirectUrl = "index.html";
     try{
         ResourceBundle resource = ResourceBundle.getBundle("sw4/dbconfig");
         String url=resource.getString("url");
@@ -37,16 +37,17 @@
         } else if (adminRS.next()) {
             redirectUrl = "admin.html"; // 어드민 페이지
         } else {
-            out.println("<script>alert('로그인 실패');</script>");
-            redirectUrl = "index.html";
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('로그인 실패');");
+            out.println("</script>");
         }
 
-
-        response.sendRedirect(redirectUrl);
+     //   response.sendRedirect(redirectUrl);
         adminRS.close();        // ResultSet exit
         studentRS.close();
         stmt.close();     // Statement exit
         conn.close();    // Connection exit
+        out.println("<script type=\"text/javascript\">location='" + redirectUrl +"';</script>");
     }
     catch (SQLException e) {
         out.println("err:"+e.toString());
