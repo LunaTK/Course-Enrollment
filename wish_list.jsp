@@ -10,7 +10,7 @@ function OnButtonDown(button) {
 	alert('수업이 등록 되었습니다.');
 } 
 function OnButtonUp(button) {
-	alert('책가방에 담겼습니다.');
+	alert('수업이 삭제 되었습니다..');
 } 
 </script> 
 <style>
@@ -26,11 +26,17 @@ background-color: #84B1ED; }
 
 </head>
 <body> 
+<%if((String)session.getAttribute("student_number") == null){
+	
+response.sendRedirect("login.jsp");
+}
+%>
 <div id="header">
 		
 <a id="home_ref" href="index_student.html">
 			
 <img src='logo.jpg'>
+	</div>
 		
 </a>	
 	<div id="nav">
@@ -59,6 +65,7 @@ background-color: #84B1ED; }
 		<th> 끝나는 시간</th>  
 		<th> 강의 날짜</th>  
 		<th> 신청하기 </th>  
+		<th> 삭제하기 </th>  
 	</tr>
 		<%!
 public String ChangeFormat(String time) {
@@ -129,6 +136,9 @@ public String ChangeFormat(String time) {
 		<td><%= ed %></td>
 		<td><%= day %></td>
 		<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
+		</td>
+<form action="removing.jsp" method="post">
+		<td><a href="removing.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">삭제하기</a>
 		</td>
 	  </tr>
 	<%
