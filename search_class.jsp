@@ -25,7 +25,7 @@ background-color: #84B1ED; }
 </head>
 <body>
 	<div id="header">
-		<a id="home_ref" href="index_student.html">
+		<a id="home_ref" href="index_professor.html">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
@@ -48,6 +48,14 @@ background-color: #84B1ED; }
 				<tr>
 					<td><label>학년</label></td>
 					<td><input name="class_year" type="string"></td>
+				</tr>
+				<tr>
+					<td><label>교수명</label></td>
+					<td><input name="class_professor" type="string"></td>
+				</tr>
+				<tr>
+					<td><label>학점</label></td>
+					<td><input name="class_credit" type="string"></td>
 				</tr>
 				<tr>
 					<td>신청 가능</td>
@@ -95,17 +103,12 @@ public String ChangeFormat(String time) {
 %>
 		<%
 				String dayStr[] = {"월","화","수","목","금","토","일"};
+		int i = 0;
 				String in_class_name = request.getParameter("class_name");
 				String in_class_year = request.getParameter("class_year");
 				String in_class_state = request.getParameter("class_state");
-				int i = 2;
-				int j = 0;
-				if(in_class_name == "" || in_class_name == null){
-				  i--;
-				}
-				if(in_class_year == "" || in_class_year == null){
-				  i--;
-				}
+				String in_class_professor = request.getParameter("class_professor");
+				String in_class_credit = request.getParameter("class_credit");
 				Connection conn = null;
 				Connection con = null;
 				ResultSet rs = null;
@@ -125,14 +128,7 @@ public String ChangeFormat(String time) {
 					String query = "SELECT * FROM class";
 					rs = stmt.executeQuery(query);
 					while(rs.next()){
-						if((rs.getString(5).equals(in_class_name))|| (rs.getString(8).equals(in_class_year)) && (rs.getString(10).equals(in_class_state))){
-							j= 0;
-						if(rs.getString(5).equals(in_class_name)){
-							j++;
-						}
-						if(rs.getString(8).equals(in_class_year)){
-							j++;
-						}
+						if((rs.getString(5).equals(in_class_name))|| (rs.getString(8).equals(in_class_year)) || (rs.getString(6).equals(in_class_professor)) || (rs.getString(3).equals(in_class_credit)) && (rs.getString(10).equals(in_class_state))){
 							String qu = "SELECT * FROM class_time where class_id = '" + rs.getInt(1) +"'";
 							rc = stm.executeQuery(qu);
 							String start = "";
@@ -147,8 +143,7 @@ public String ChangeFormat(String time) {
 								day = day + dayStr[rc.getInt(4)] + "<br />";
 							} // end while
 							rc.close();
-							if(i == j){
-	%>
+		%>
 	
 		<tr>
 	<td><%=rs.getString(5)%></td>
@@ -164,12 +159,11 @@ public String ChangeFormat(String time) {
 	<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
 	</td>
 </form>
-<form action="wish_list.jsp" method="post">
-	<td><a href="wish_list.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">담기</a>
+<form action="wish.jsp" method="post">
+	<td><a href="wish.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">담기</a>
 	</td>
 	</tr>
 		<%
-						}
 						}
 					}
   rs.close();        // ResultSet exit
