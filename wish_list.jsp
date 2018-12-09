@@ -45,32 +45,8 @@ background-color: #84B1ED; }
 	<div id="content">
 		<h2>책가방 </h2>
 		<table id = "list">
-		<%
-				Connection conn = null;
-				Connection con = null;
-				ResultSet rs = null;
-				ResultSet rc = null;
-				Statement stm = null;
-				Statement stmt = null;
-				String sqlStr = null;
-				int i=0;
-				try{
-					Class.forName("com.mysql.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/school?characterEncoding=UTF-8&serverTimezone=UTC", "root", "sim6769");
-					stmt = conn.createStatement();
-					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/school?characterEncoding=UTF-8&serverTimezone=UTC", "root", "sim6769");
-					stm = conn.createStatement();
-					rc = stm.executeQuery("SELECT * FROM wish_list");
-
-		while(rc.next()) { //rs 를 통해 테이블 객체들의 필드값을 넘겨볼 수 있다.
-					rs = stmt.executeQuery("SELECT * FROM class");
-		%>
-
 <form action="getting.jsp" method="post">
-<%
-if(i == 0){
-%>
-<table id = "list" border="3" cellspacing="3">
+		<table id = "list" border="3" cellspacing="3">
 	<tr class>
 	<th> 강의명 </th>
 		<th> 강사명 </th>
@@ -84,38 +60,91 @@ if(i == 0){
 		<th> 강의 날짜</th>  
 		<th> 신청하기 </th>  
 	</tr>
-<%
-	i = 1;
+		<%!
+public String ChangeFormat(String time) {
+	int Length = time.length();
+	String subString1 = "";
+	String subString2 = "";
+	if(Length == 3){
+		 subString2 = time.substring(1, 3);
+		 subString1 = time.substring(0, 1);
+	}else{
+		 subString2 = time.substring(2, 4);
+		 subString1 = time.substring(0, 2);	
+	}
+	return subString1 + ":" + subString2;
 }
 %>
-	<%
+		<%
+		String dayStr[] = {"월","화","수","목","금","토","일"};
+				Connection conn = null;
+				Connection con = null;
+				Connection co = null;
+				ResultSet rd = null;
+				ResultSet rc = null;
+				ResultSet rs = null;
+				Statement st = null;
+				Statement stm = null;
+				Statement stmt = null;
+				String sqlStr = null;
+				try{
+					Class.forName("com.mysql.jdbc.Driver");
+					conn = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
+					stmt = conn.createStatement();
+					con = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
+					stm = con.createStatement();
+					co = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
+					st = co.createStatement();
+					
+					rc = stm.executeQuery("SELECT * FROM wish_list");
+
+		while(rc.next()) { //rs 를 통해 테이블 객체들의 필드값을 넘겨볼 수 있다.
+					rs = stmt.executeQuery("SELECT * FROM class");
 			while(rs.next()){
 				if(rc.getString(2).equals(rs.getString(1))){
-	%><tr>
-		<td><%=rs.getString(6)%></td>
-		<td><%=rs.getString(7)%></td>
-		<td><%=rs.getString(4)%></td>
+					String qu = "SELECT * FROM class_time where class_id = '" + rs.getInt(1) +"'";
+							rd = st.executeQuery(qu);
+							String start = "";
+							String ed = "";
+							String day = "";
+							String temp = "";
+							while(rd.next()){
+								temp = ChangeFormat(rd.getString(2));
+								start = start + temp+ "<br />";
+								temp = ChangeFormat(rd.getString(3));
+								ed = ed + temp + "<br />";
+								day = day + dayStr[rd.getInt(4)] + "<br />";
+							} // end while
+							rd.close();
+		%>
+<tr>
 		<td><%=rs.getString(5)%></td>
-		<td><%=rs.getString(3)%></td>
+		<td><%=rs.getString(6)%></td>
+		<td><%=rs.getString(4)%></td>
 		<td><%=rs.getString(9)%></td>
+		<td><%=rs.getString(3)%></td>
 		<td><%=rs.getString(8)%></td>
-		<td><%=rs.getString(10)%></td>
-		<td><%=rs.getString(11)%></td>
-		<td><%=rs.getString(12)%></td>
+		<td><%=rs.getString(7)%></td>
+		<td><%= start %></td>
+		<td><%= ed %></td>
+		<td><%= day %></td>
 		<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
 		</td>
 	  </tr>
 	<%
 				}
 			}
-		} // end while
+			rs.close();
+		}   // end while
 	%>
 <%
-  rs.close();        // ResultSet exit
+        // ResultSet exit
   rc.close();
+  st.close();
   stm.close();
   stmt.close();     // Statement exit
   con.close();
+  co.close();
   conn.close();    // Connection exit
 }
 catch (SQLException e) {
