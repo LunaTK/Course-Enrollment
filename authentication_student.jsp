@@ -1,4 +1,4 @@
-﻿<%@ page import="java.sql.*, java.util.*" %>
+<%@ page import="java.sql.*, java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
@@ -22,11 +22,12 @@
     String redirectUrl = "form.jsp?error=login-failed.."; // 인증 실패시 요청 될 url 
 	while(rs.next()){
 		if(rs.getString(1).equals(id) && rs.getString(2).equals(pw)){
+			session.setAttribute("id", id);
             redirectUrl = "index_student.html?id=" + id; // 인증 성공 시 재 요청 url
 		}
 	}
 
-    response.sendRedirect(redirectUrl);
+   response.sendRedirect(redirectUrl);
   rs.close();        // ResultSet exit
   stmt.close();     // Statement exit
   conn.close();    // Connection exit
