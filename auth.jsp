@@ -35,6 +35,7 @@
             session.setAttribute("student_number", uid);
             redirectUrl = "index_student.html?id=" + id; // 학생 메인 페이지
         } else if (adminRS.next()) {
+            session.setAttribute("is_admin", true);
             redirectUrl = "admin.html"; // 어드민 페이지
         } else {
             out.println("<script type=\"text/javascript\">");
