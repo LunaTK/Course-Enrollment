@@ -12,7 +12,7 @@
 					PreparedStatement preparedStmt = null;
 	int class_id = Integer.parseInt(id);
 	if(id != null){	
-		String number = (String)session.getAttribute("id");
+		String number = (String)session.getAttribute("student_number");
 		if(number == null){
 			response.sendRedirect("login.jsp");
 		}
