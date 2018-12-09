@@ -29,9 +29,10 @@ background-color: #84B1ED; }
 <body> 
 <div id="header">
 		
-<a id="home_ref" href="index.html">
+<a id="home_ref" href="index_student.html">
 			
 <img src='logo.jpg'>
+	</div>
 		
 </a>	
 	<div id="nav">
@@ -94,8 +95,8 @@ background-color: #84B1ED; }
 	<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
 	</td>
 </form>
-<form action="wish_list.jsp" method="post">
-	<td><a href="wish_list.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">담기</a>
+<form action="wish.jsp" method="post">
+	<td><a href="wish.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">담기</a>
 	</td>
 	</tr>
 	<%
