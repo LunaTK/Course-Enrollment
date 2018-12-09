@@ -6,7 +6,7 @@
 <head>
 	<title> 수업 등록 </title>
 	<link rel="stylesheet" href="css/admin.css">
-	<script>
+	<script type="text/javascript">
 		var time_count = 1;
 		function add_time(){
 			var tbody = document.getElementById("class_tbody");
@@ -46,8 +46,13 @@
 	</script>
 </head>
 <body>
+	<%
+		if(session.getAttribute("is_admin")==null){
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
+		}
+	%>
 	<div id="header">
-		<a id="home_ref" href="index_professor.html">
+		<a id="home_ref" href="index_admin.jsp">
 			<img src='logo.jpg'>
 		</a>	
 	</div>

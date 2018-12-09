@@ -34,8 +34,13 @@ background-color: #84B1ED; }
 	<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
+	<%
+		if(session.getAttribute("is_admin")==null){
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
+		}
+	%>
 	<div id="header">
-		<a id="home_ref" href="index_professor.html">
+		<a id="home_ref" href="index_admin.jsp">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
@@ -89,7 +94,6 @@ background-color: #84B1ED; }
 		<th> 시작 시간 </th>  
 		<th> 끝나는 시간</th>  
 		<th> 강의 날짜</th>  
-		<th> 관리하기 </th>  
 	</tr>	
 	<%!
 		public String ChangeFormat(String time) {
@@ -170,8 +174,6 @@ background-color: #84B1ED; }
 	<td><%= start %></td>
 	<td><%= ed %></td>
 	<td><%= day %></td>
-	<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">관리하기</a>
-	</td>
 	</td>
 	</tr>
 	</form>
