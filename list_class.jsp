@@ -27,11 +27,17 @@ background-color: #84B1ED; }
 
 </head>
 <body> 
+<%if((String)session.getAttribute("student_number") == null){
+	
+response.sendRedirect("login.jsp");
+}
+%>
 <div id="header">
 		
 <a id="home_ref" href="index_student.html">
 			
 <img src='logo.jpg'>
+	</div>
 		
 </a>	
 	<div id="nav">
