@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="header">
-		<a id="home_ref" href="index.html">
+		<a id="home_ref" href="index_professor.html">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
@@ -19,8 +19,8 @@
 			<li> <a href="register_student.jsp">학생 등록</a></li>
 			<li> <a href="register_class.jsp">수업 등록 </a></li>
 			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
-			<li> <a href="list_class.jsp">수업 목록 </a></li>
-			<li> <a href="search_class.jsp">수업 검색</a></li>
+			<li> <a href="list_class_admin.jsp">수업 목록 </a></li>
+			<li> <a href="search_class_admin.jsp">수업 검색</a></li>
 		</ul>
 	</div>
 	<div id="content">
@@ -57,7 +57,7 @@
 				PreparedStatement preparedStmt = null;
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Proj2", "root", "111111");
+					conn = DriverManager.getConnection("jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course", "lunatk", "Thtlf1210");
 				}
 				catch(Exception e){
 					out.println("데이터베이스 접속에 문제가 있습니다. <hr>");
@@ -66,26 +66,22 @@
 				}
 				stmt = conn.createStatement();
 				//insert into student_id_pswd table 
-				sqlStr = "INSERT INTO student_id_pswd values (?,?,?)";
+				sqlStr = "INSERT INTO student (student_number, student_pswd, allowed_credit, student_year, student_name) values (?,?,?,?,?)";
 				preparedStmt = conn.prepareStatement(sqlStr);
 				preparedStmt.setInt(1, student_number);
 				preparedStmt.setString(2, student_pswd);
-				preparedStmt.setString(3, student_name);
+				preparedStmt.setInt(3, allowed_credit);
+				preparedStmt.setInt(4, student_year);
+				preparedStmt.setString(5, student_name);
 				preparedStmt.execute();
+
 				//insert into student_credit_year table
-				sqlStr = "INSERT INTO student_credit_year values(?,?,?)";
-				preparedStmt = conn.prepareStatement(sqlStr);
-				preparedStmt.setInt(1, student_number);
-				preparedStmt.setInt(2, allowed_credit);
-				preparedStmt.setInt(3, student_year);
-				preparedStmt.execute();
 				out.println("<script>alert('학생이 등록 되었습니다.');</script>");
 			}
 			else if(in_student_number != null || student_pswd != null || student_name != null || in_student_year != null || in_allowed_credit != null){
 				out.println("<script>alert('빈칸을 모두 채워주세요.');</script>");
 			}
 		%>
-
 	</div>
 </body>
 </html>
