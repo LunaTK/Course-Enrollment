@@ -27,24 +27,23 @@
 		<h2>수업 수정, 삭제 </h2>
 		<form method="post">
 			<table>
-				<tr><td><label>학수번호</label></td>
-				<td><input name="class_number" type="text"></td></tr>
+				<tr><td><label>강의명</label></td>
+				<td><input name="class_name" type="text" required></td></tr>
 			</table>
 			<button type="submit" class="register_btn">검색 </button>
 		</form>
 		<%
-			String class_number = request.getParameter("class_number");
+			String class_name = request.getParameter("class_name");
 			int class_id = 0;
 			int class_credit=0;
 			int start_time=0;
 			int end_time=0;
 			int class_people=0;
-			String class_name=null;
 			String class_professor =null;
 			int class_room=0;
 			int class_year = 0;
 			String day_of_clas = null;
-			if(class_number !=null){
+			if(class_name !=null){
 				Connection conn = null;
 				Statement stmt = null;
 				String sqlStr = null;
@@ -59,13 +58,12 @@
 					e.printStackTrace();
 				}
 				stmt = conn.createStatement();
-				sqlStr = "select * from class where class_number ='"+class_number+"'";
+				sqlStr = "select * from class where class_name ='"+class_name+"'";
 				ResultSet rset = stmt.executeQuery(sqlStr);
 				if(rset.next()){
 					class_id = rset.getInt("class_id");
 					class_credit = rset.getInt("class_credit");
 					class_people = rset.getInt("class_people");
-					class_name = rset.getString("class_name");
 					class_professor = rset.getString("class_professor");
 					class_room = rset.getInt("class_room");
 					class_year = rset.getInt("class_year");
@@ -82,8 +80,6 @@
 
 		<form method="post">
 			<table>
-				<tr><td><label>학수번호</label></td>
-				<td><input id="class_number" name="class_number" type="text"></td></tr>
 				<tr><td><label>강의명</label></td>
 				<td><input id="class_name" name="class_name" type="text"></td></tr>
 				<tr><td><label>강사명</label></td>
@@ -107,7 +103,6 @@
 			<button type="submit" class="register_btn">수정 </button>
 		</form>
 		<script type="text/javascript">
-			document.getElementById("class_number").value = '<%= class_number %>';
 			document.getElementById("class_credit").value = <%= class_credit %>;
 			document.getElementById("start_time").value = <%= start_time %>;
 			document.getElementById("end_time").value = <%= end_time %>;
@@ -119,7 +114,6 @@
 			document.getElementById("day_of_class").value = '<%= day_of_clas %>';
 		</script>
 		<%
-			class_number = request.getParameter("class_number");
 			class_name = request.getParameter("class_name");
 			class_professor = request.getParameter("class_professor");
 			String in_class_people = request.getParameter("class_people");
@@ -129,7 +123,7 @@
 			String in_start_time = request.getParameter("start_time");
 			String in_end_time = request.getParameter("end_time");
 			day_of_clas = request.getParameter("day_of_class");
-			if(class_number !=null && class_name!=null && class_professor!=null && in_class_people!=null && in_class_room !=null && in_class_year!=null && in_class_credit!=null && in_start_time!=null && in_end_time!=null && day_of_clas!=null){
+			if(class_name!=null && class_professor!=null && in_class_people!=null && in_class_room !=null && in_class_year!=null && in_class_credit!=null && in_start_time!=null && in_end_time!=null && day_of_clas!=null){
 				class_people = Integer.parseInt(in_class_people);
 				class_room = Integer.parseInt(in_class_room);
 				class_year = Integer.parseInt(in_class_year);
@@ -150,16 +144,15 @@
 					e.printStackTrace();
 				}
 				stmt = conn.createStatement();
-				sqlStr = "update class set class_number=?, class_credit=?, class_people=?, class_name=?, class_professor=?, class_room=?, class_year=? where class_id=?";
+				sqlStr = "update class set class_credit=?, class_people=?, class_name=?, class_professor=?, class_room=?, class_year=? where class_id=?";
 				preparedStmt = conn.prepareStatement(sqlStr);
-				preparedStmt.setString(1, class_number);
-				preparedStmt.setInt(2, class_credit);
-				preparedStmt.setInt(3, class_people);
-				preparedStmt.setString(4, class_name);
-				preparedStmt.setString(5, class_professor);
-				preparedStmt.setInt(6, class_room);
-				preparedStmt.setInt(7, class_year);
-				preparedStmt.setInt(8, class_id);
+				preparedStmt.setInt(1, class_credit);
+				preparedStmt.setInt(2, class_people);
+				preparedStmt.setString(3, class_name);
+				preparedStmt.setString(4, class_professor);
+				preparedStmt.setInt(5, class_room);
+				preparedStmt.setInt(6, class_year);
+				preparedStmt.setInt(7, class_id);
 				preparedStmt.execute();
 
 				sqlStr = "update class_time set start_time=?, end_time=?, day_of_class=? where class_id=?";
@@ -172,11 +165,6 @@
 				out.println("<script>alert('수업이 수정 되었습니다.');</script>");
 			}
 		%>
-		<%--
-			else if(class_number !=null || class_name!=null || class_professor!=null || in_class_people!=null || in_class_room !=null || in_class_year!=null || in_class_credit!=null || in_start_time!=null || in_end_time!=null || day_of_clas!=null){
-				out.println("<script>alert('빈칸을 모두 채워주세요.');</script>");
-			}
-		--%>
 	</div>
 </body>
 </html>

@@ -28,15 +28,15 @@
 		<form method="post">
 			<table>
 				<tr><td><label>학번</label></td>
-				<td><input name="student_number" type="number"></td></tr>
+				<td><input name="student_number" type="number" required></td></tr>
 				<tr><td><label>비밀번호</label></td>
-				<td><input name="student_pswd" type="password"></td></tr>
+				<td><input name="student_pswd" type="password" required></td></tr>
 				<tr><td><label>이름</label></td>
-				<td><input name="student_name" type="text"></td></tr>
+				<td><input name="student_name" type="text" required></td></tr>
 				<tr><td><label>학년</label></td>
-				<td><input name="student_year" type="number"></td></tr>
+				<td><input name="student_year" type="number" required></td></tr>
 				<tr><td><label>허용학점</label></td>
-				<td><input name="allowed_credit" type="number"></td></tr>
+				<td><input name="allowed_credit" type="number" required></td></tr>
 			</table>
 			<br>
 			<button type="submit" class="register_btn">등록 </button>
@@ -77,9 +77,6 @@
 
 				//insert into student_credit_year table
 				out.println("<script>alert('학생이 등록 되었습니다.');</script>");
-			}
-			else if(in_student_number != null || student_pswd != null || student_name != null || in_student_year != null || in_allowed_credit != null){
-				out.println("<script>alert('빈칸을 모두 채워주세요.');</script>");
 			}
 		%>
 	</div>
