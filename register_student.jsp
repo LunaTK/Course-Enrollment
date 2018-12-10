@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input name="year" type="number" placeholder="학점">
+						<input name="year" type="number" placeholder="학년">
 					</td>
 				</tr>
 				<tr>
