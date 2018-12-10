@@ -6,12 +6,6 @@
 <html> 
 <head>
 <script> 
-function OnButtonDown(button) {
-	alert('수업이 등록 되었습니다.');
-} 
-function OnButtonUp(button) {
-	alert('수업이 삭제 되었습니다..');
-} 
 </script> 
 <style>
 #list td, #list th { 
@@ -26,22 +20,25 @@ background-color: #84B1ED; }
 
 </head>
 <body> 
-<%if((String)session.getAttribute("student_number") == null){
-	
-response.sendRedirect("login.jsp");
-}
-%>
+<%
+		if(session.getAttribute("student_number")==null){
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
+		}
+	%>
 <div id="header">
 		
-<a id="home_ref" href="index_student.html">
+<a id="home_ref" href="index_student.jsp">
 			
 <img src='logo.jpg'>
 	</div>
-		
+		<div style= "float: right">
+		<a href="index.html">로그아웃</a>
+	</div>
+<br>
 </a>	
 	<div id="nav">
 		<ul>	
-			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
+			<li> <a href="modify_class_student.jsp">수업 확인, 삭제</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
@@ -135,10 +132,10 @@ public String ChangeFormat(String time) {
 		<td><%= start %></td>
 		<td><%= ed %></td>
 		<td><%= day %></td>
-		<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
+		<td><a href="getting.jsp?get=<%=rs.getString(1)%>">신청하기</a>
 		</td>
 <form action="removing.jsp" method="post">
-		<td><a href="removing.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">삭제하기</a>
+		<td><a href="removing.jsp?del=<%=rs.getString(1)%>">삭제하기</a>
 		</td>
 	  </tr>
 	<%
