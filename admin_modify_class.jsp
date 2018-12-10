@@ -160,8 +160,11 @@
 				</tbody>
 			</table>
 			<br>
-			<button type="button" class="register_btn" onclick="add_time();">강의 시간 추가</button>/
-			<button type="button" class="register_btn" onclick="delete_time();">삭제</button>
+			<div align="center">
+				<button type="button" class="register_btn" onclick="add_time();">강의 시간 추가</button>/
+				<button type="button" class="register_btn" onclick="delete_time();">삭제</button>
+			</div>
+			
 			<br>
 			<button type="submit" class="register_btn">수정 </button>
 		</form>

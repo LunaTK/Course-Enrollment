@@ -232,6 +232,6 @@ form {
 }
 
 button[type="submit"],
-button.submit_btn {
+button.register_btn {
 	margin: auto;
 }
