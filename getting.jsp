@@ -19,7 +19,7 @@ int i;
 					int class_id = Integer.parseInt(id);
 		 String number = (String)session.getAttribute("student_number");
 		if(number == null){
-			response.sendRedirect("index.html");
+			response.sendRedirect("login.jsp");
 		}
 	String s = "select * from student where student_number ='"+ (String)session.getAttribute("student_number")+"'";
 	ResultSet r = stm.executeQuery(s);
