@@ -12,27 +12,18 @@
 			var tbody = document.getElementById("class_tbody");
 			var row = tbody.insertRow(tbody.rows.length);
 			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var str1 = "<label>강의 요일 </label>";
-			var str2 = "<input name='day_of_class"+time_count.toString()+"' type='radio' value='0' required>월 <input name='day_of_class"+time_count.toString()+"' type='radio'value='1'>화 <input name='day_of_class"+time_count.toString()+"' type='radio' value='2'>수 <input name='day_of_class"+time_count.toString()+"' type='radio' value='3'>목 <input name='day_of_class"+time_count.toString()+"' type='radio' value='4'>금";
+			var str1 = "<div class='controls'> 강의요일 &nbsp;&nbsp;&nbsp;&nbsp;  <input id='mon' name='day_of_class"+time_count.toString()+"' type='radio' value='0' required> <label for='mon' class='radio'>월</label> <input id='thu' name='day_of_class"+time_count.toString()+"' type='radio'value='1'> <label for='thu' class='radio'>화</label> <input id='wed' name='day_of_class"+time_count.toString()+"' type='radio' value='2'> <label for='wed' class='radio'>수</label> <input id='thr' name='day_of_class"+time_count.toString()+"' type='radio' value='3'> <label for='thr' class='radio'>목</label> <input id='fri' name='day_of_class"+time_count.toString()+"' type='radio' value='4'> <label for='fri' class='radio'>금</label></div><br>";
 			cell1.innerHTML=str1;
-			cell2.innerHTML=str2;
 
 			row = tbody.insertRow(tbody.rows.length);
 			cell1 = row.insertCell(0);
-			cell2 = row.insertCell(1);
-			str1 = "<label>시작시간</label>";
-			str2 = "<input name='start_time' type='number' required>";
+			str1 = "<input name='start_time' type='number' required placeholder='시작시간'>";
 			cell1.innerHTML=str1;
-			cell2.innerHTML=str2;
 
 			row = tbody.insertRow(tbody.rows.length);
 			cell1 = row.insertCell(0);
-			cell2 = row.insertCell(1);
-			str1 = "<label>종료시간</label>";
-			str2 = "<input name='end_time' type='number' required>";
+			str1 = "<input name='end_time' type='number' required placeholder='종료시간'>";
 			cell1.innerHTML=str1;
-			cell2.innerHTML=str2;
 			time_count +=1 ;
 		}
 		function delete_time(){
@@ -67,11 +58,11 @@
       <li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 		</ul>
 	</div>
-	<div class="form_student" style="height:850px;">
+	<div class="form_student" style="height:1000px;">
 		<h2 align=center>수업 등록 </h2>
 		<form method="post">
 			<input id="time_count" name="time_count" type="hidden" value=1>
-			<table style="width:400px">
+			<table style="width:400px;">
 				<tbody id="class_tbody">
 					<tr>
 					  <td>
@@ -100,7 +91,7 @@
           </tr>
 					<tr>
             <td>
-              <input name="class_credit" type="number" required placeholder="학점">
+              <input name="class_credit" type="number" required placeholder="수강학년">
             </td>
           </tr>
           <tr>
