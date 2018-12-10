@@ -106,7 +106,7 @@
           </tr>
 					<tr>
             <td>
-              <input name="class_credit" type="number" required placeholder="수강학">
+              <input name="class_credit" type="number" required placeholder="수강학점">
             </td>
           </tr>
           <tr>
