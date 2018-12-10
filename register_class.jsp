@@ -8,7 +8,20 @@
 	<link rel="stylesheet" href="./css/admin.css?ver=51">
 	<script>
 		var time_count = 1;
+    function div2Resize() {
+            var div2 = document.getElementsByClassName('form_student')[0];
+            var height = div2.offsetHeight;
+            var newHeight = height + 100;
+            div2.style.height = newHeight + 'px';
+        }
+    function div1Resize() {
+            var div2 = document.getElementsByClassName('form_student')[0];
+            var height = div2.offsetHeight;
+            var newHeight = height - 280;
+            div2.style.height = newHeight + 'px';
+        }
 		function add_time(){
+
 			var tbody = document.getElementById("class_tbody");
 			var row = tbody.insertRow(tbody.rows.length);
 			var cell1 = row.insertCell(0);
@@ -25,6 +38,7 @@
 			str1 = "<input name='end_time' type='number' required placeholder='종료시간'>";
 			cell1.innerHTML=str1;
 			time_count +=1 ;
+      			div2Resize();
 		}
 		function delete_time(){
 			var tbody = document.getElementById("class_tbody");
@@ -33,6 +47,7 @@
 			tbody.deleteRow(tbody.rows.length-1);
 			tbody.deleteRow(tbody.rows.length-1);
 			time_count -=1;
+		        div1Resize();
 		}
 	</script>
 </head>
