@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic");
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
 
-* {
+.time-table {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -40,6 +40,6 @@ table .lecture-cell {
   z-index: 3;
   position: absolute;
   top: 0;
-  font-size: 25%;
+  font-size: 11px;
   line-break: white-space;
 }
