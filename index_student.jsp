@@ -25,9 +25,6 @@
 </a>	
 	
 </div>
-<div style= "float: right">
-<a href="logout.jsp">로그아웃</a>
-</div>
 	
 <br>
 <div id="nav">
@@ -48,6 +45,7 @@
 </li>	
 <li> <a href="timetable.jsp">시간표 보기</a>
 </li>
+<li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 </ul>
 	
 </div>
