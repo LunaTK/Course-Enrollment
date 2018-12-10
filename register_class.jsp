@@ -52,7 +52,7 @@
 		}
 	%>
 	<div id="header">
-		<a id="home_ref" href="index_professor.html">
+		<a id="home_ref" href="index_admin.jsp">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
