@@ -28,9 +28,6 @@
 			<img src='logo.jpg'>
 		</a>	
 	</div>
-	<div style= "float: right">
-		<a href="index.html">로그아웃</a>
-	</div>
 <br>
 	<div id="nav">
 		<ul>
@@ -39,6 +36,7 @@
 			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
 			<li> <a href="list_class_admin.jsp">수업 목록 </a></li>
 			<li> <a href="search_class_admin.jsp">수업 검색</a></li>
+			<li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 		</ul>
 	</div>
 	<div id="content">
