@@ -1,217 +1,195 @@
-table {
-    margin: auto;
+table{
+	margin:auto;
+}
+td{
+	text-align:right;
 }
 
-td {
-    text-align: right;
+label{
+	font-size:13pt;
 }
-
-label {
-    font-size: 13pt;
-}
-
-input {
-    margin: 5px;
-    font-size: 12pt;
-    background-color: inherit;
-    border: none;
-    border: 0.5px solid black;
+input{
+	margin:5px;
+	font-size:12pt;
+	background-color: inherit;
+	border:none;
+	border:0.5px solid black;
 }
 
 .form_student_alpha {
-    position: relative;
-    z-index: 2;
-    background: #FFFFFF;
-    width: 430px;
-    height: 100%;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+	position: relative;
+	z-index: 2;
+	background: #FFFFFF;
+	width:430px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
 
 .form_student {
-    float: center;
-    position: relative;
-    z-index: 2;
-    background: #FFFFFF;
-    width: 430px;
-    height: 100%;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+	float:center;
+	position: relative;
+	z-index: 2;
+	background: #FFFFFF;
+	width: 430px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
 
-.form_student,
-.form_student_alpha input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
+.form_student input {
+	font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form_student button {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #4CAF50;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+  cursor: pointer;
+	border-radius:5px;
+}	.form_student button:hober, .form_student button:active, .form_student button:focus {
+	background: #43A047;
+} .form_student input {
+	outline: 0;
+	width: 100%;
 }
 
-.form_student,
-.form_student_alpha button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #4CAF50;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
+.controls {
+	font-family: "Roboto", sans-serif;
 }
-
-.form_student,
-.form_student_alpha button:hober,
-.form_student,
-.form_student_alpha button:active,
-.form_student,
-.form_student_alpha button:focus {
-    background: #43A047;
+.controls input[type="radio"] {
+    display:none;
 }
-
-.form_student,
-.form_student_alpha input {
-    outline: 0;
-    width: 100%;
+.controls label {
+    display:inline-block;
+    background-color:#f2f2f2;
+    padding: 10px 20px;
+    font-family:Arial;
+    font-size:16px;
+    border-radius: 4px;
+} .controls input[type="radio"]:checked + label {
+    background-color:#43A047;
+    border-color: #4c4;
+} .controls label:hover {
+  background-color: #dfd;
 }
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-button[type="submit"],
-button.submit_btn {
-    margin: auto;
-}
-
 
 .form {
-    display: inline-block;
-    float: left;
-    position: relative;
-    z-index: 2;
-    background: #FFFFFF;
-    width: 300px;
-    height: 100%;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+	display: inline-block;
+	float: left;
+	position: relative;
+	z-index: 2;
+	background: #FFFFFF;
+	width: 300px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
-
 .form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
+	font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
-
 .form button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #4CAF50;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.form button:hober,
-.form button:active,
-.form button:focus {
-    background: #43A047;
-}
-
-.form input {
-    outline: 0;
-    width: 100%;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #4CAF50;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+  cursor: pointer;
+	border-radius:5px;
+}	.form button:hober, .form button:active, .form button:focus {
+	background: #43A047;
+} .form input {
+	outline: 0;
+	width: 100%;
 }
 
 .gonzi {
-    display: flex;
-    align-content: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    overflow: auto;
+	display: flex;
+	align-content: flex-start;
+	flex-direction: column;
+	flex-wrap: wrap;
+	overflow: auto;
 }
 
 .wrapper_div {
-    position: relative;
-    width: 100%;
-    height: 300px;
+	position: relative;
+  width: 100%;
+  height: 300px;
 }
 
-#header {
-    text-align: center;
-    width: 100%;
-    height: 100px;
-    padding: 30px;
+#header{
+	text-align:center;
+	width:100%;
+	height:100px;
+	padding:30px;
+}
+#nav{
+	width:100%;
+	height:40px;
+	font-size:20px;
+	background-color:#008000;
+} #nav ul{
+	padding:8px 3px 3px 3px;
+	text-align:center;
+  overflow: hidden;
+} #nav ul li{
+	display:inline;
+	padding:0px 30px;
+	background-color: #008000;
+	color:white;
+} #nav ul li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+} #nav ul li a:hover:not(.active){
+	background-color: #4CAF50;
+	text-decoration:none;
+	color:white;
+
 }
 
-#nav {
-    width: 100%;
-    height: 40px;
-    font-size: 20px;
-    background-color: #008000;
-}
-
-#nav ul {
-    padding: 8px 3px 3px 3px;
-    text-align: center;
-}
-
-#nav ul li {
-    display: inline;
-    padding: 0px 30px;
-}
-
-#nav ul li {
-    background-color: #008000;
-    color: white;
-}
-
-#nav ul li a {
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-#nav ul li a:hover {
-    background-color: #008000;
-    text-decoration: none;
-    color: black
-}
-
-#content {
-    position: relative;
-    overflow: hidden;
-    height: auto;
-    min-height: 300px;
-    z-index: 1;
-    background: #FFFFFF;
-    width: auto;
-    padding: 45px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+#content{
+	position: relative;
+	overflow:hidden;
+	height:auto;
+	min-height: 300px;
+	z-index: 1;
+	background: #FFFFFF;
+	width: auto;
+  padding: 45px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
