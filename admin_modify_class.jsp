@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title> 수업 수정 </title>
-	<link rel="stylesheet" href="css/admin.css">
+	<link rel="stylesheet" href="./css/admin.css?ver=51">
 	<script type="text/javascript">
 		var time_count = 0;
 		function add_time(){
