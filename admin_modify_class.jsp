@@ -120,6 +120,9 @@
 					i +=1;
 				}
 				i=0;
+				preparedStmt.close();
+				stmt.close();
+				conn.close();
 			}
 			catch (SQLException e) {
 			    out.println("err:"+e.toString());
@@ -222,40 +225,43 @@
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection("jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course", "lunatk", "Thtlf1210");
-				}
-				catch(Exception e){
-					out.println("데이터베이스 접속에 문제가 있습니다. <hr>");
-					out.println(e.getMessage());
-					e.printStackTrace();
-				}
-				stmt = conn.createStatement();
-				//insert into class table 
-				sqlStr = "UPDATE class SET class_credit=?, class_max_people=?, class_name=?, class_professor=?, class_room=?, class_year=? where class_id=?";
-				preparedStmt = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);
-				preparedStmt.setInt(1, class_credit);
-				preparedStmt.setInt(2, class_max_people);
-				preparedStmt.setString(3, class_name);
-				preparedStmt.setString(4, class_professor);
-				preparedStmt.setInt(5, class_room);
-				preparedStmt.setInt(6, class_year);
-				preparedStmt.setInt(7, class_id);
-				preparedStmt.execute();
-			
-				sqlStr = "DELETE from class_time where class_id="+String.valueOf(class_id);
-				stmt.executeUpdate(sqlStr);
+					stmt = conn.createStatement();
+					//insert into class table 
+					sqlStr = "UPDATE class SET class_credit=?, class_max_people=?, class_name=?, class_professor=?, class_room=?, class_year=? where class_id=?";
+					preparedStmt = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);
+					preparedStmt.setInt(1, class_credit);
+					preparedStmt.setInt(2, class_max_people);
+					preparedStmt.setString(3, class_name);
+					preparedStmt.setString(4, class_professor);
+					preparedStmt.setInt(5, class_room);
+					preparedStmt.setInt(6, class_year);
+					preparedStmt.setInt(7, class_id);
+					preparedStmt.execute();
+				
+					sqlStr = "DELETE from class_time where class_id="+String.valueOf(class_id);
+					stmt.executeUpdate(sqlStr);
 
-				for(i=0;i<start_time.length;i++){
-					sqlStr = "INSERT INTO class_time (class_id, start_time, end_time, day_of_class) values (?,?,?,?)";
-					pStmt = conn.prepareStatement(sqlStr);
-					pStmt.setInt(1, class_id);
-					pStmt.setInt(2, start_time[i]);
-					pStmt.setInt(3, end_time[i]);
-					pStmt.setString(4, day_of_clas[i]);
-					pStmt.execute();
+					for(i=0;i<start_time.length;i++){
+						sqlStr = "INSERT INTO class_time (class_id, start_time, end_time, day_of_class) values (?,?,?,?)";
+						pStmt = conn.prepareStatement(sqlStr);
+						pStmt.setInt(1, class_id);
+						pStmt.setInt(2, start_time[i]);
+						pStmt.setInt(3, end_time[i]);
+						pStmt.setString(4, day_of_clas[i]);
+						pStmt.execute();
+					}
+					
+					
+					out.println("<script>alert('수업이 수정 되었습니다.');</script>");
+					rs.close();
+					pStmt.close();
+					preparedStmt.close();
+					stmt.close();
+					conn.close();
 				}
-				
-				
-				out.println("<script>alert('수업이 수정 되었습니다.');</script>");
+				catch (SQLException e) {
+			        out.println("err:"+e.toString());
+			    }
 			}
 			
 		%>
