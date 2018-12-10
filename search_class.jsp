@@ -5,12 +5,6 @@
 <html>
 <head>
 	<script> 
-function OnButtonDown(button) {
-	alert('수업이 등록 되었습니다.');
-} 
-function OnButtonUp(button) {
-	alert('책가방에 담겼습니다.');
-} 
 </script> 
 <style>
 #list td, #list th { 
@@ -24,16 +18,20 @@ background-color: #84B1ED; }
 	<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-<%if((String)session.getAttribute("student_number") == null){
-	
-response.sendRedirect("login.jsp");
-}
-%>
+<%
+		if(session.getAttribute("student_number")==null){
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
+		}
+	%>
 	<div id="header">
 		<a id="home_ref" href="index_student.html">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
+	<div style= "float: right">
+		<a href="index.html">로그아웃</a>
+	</div>
+<br>
 	<div id="nav">
 		<ul>
 			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
@@ -165,9 +163,9 @@ response.sendRedirect("login.jsp");
 			<td><%= start %></td>
 			<td><%= ed %></td>
 			<td><%= day %></td>
-			<td><a href="getting.jsp?get=<%=rs.getString(1)%>" onclick="OnButtonDown(this)">신청하기</a>
+			<td><a href="getting.jsp?get=<%=rs.getString(1)%>">신청하기</a>
 			</td>
-			<td><a href="wish.jsp?del=<%=rs.getString(1)%>" onclick="OnButtonUp(this)">담기</a>
+			<td><a href="wish.jsp?del=<%=rs.getString(1)%>">담기</a>
 			</td>
 		</tr>
 	</form>
