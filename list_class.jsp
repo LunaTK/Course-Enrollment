@@ -33,9 +33,6 @@ background-color: #84B1ED; }
 			
 <img src='logo.jpg'>
 	</div>
-	<div style= "float: right">
-		<a href="index.html">로그아웃</a>
-	</div>
 <br>	
 </a>	
 	<div id="nav">
@@ -45,6 +42,7 @@ background-color: #84B1ED; }
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
 			<li> <a href="timetable.jsp">시간표 보기</a></li>
+			<li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 		</ul>
 	</div>
 	
