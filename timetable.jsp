@@ -30,13 +30,6 @@
       class Timestamp {
           public Integer hour  = 0, minute = 0;
 
-          public Timestamp() {};
-
-          public Timestamp(Integer hour, Integer minute) {
-              this.hour = hour;
-              this.minute = minute;
-          }
-
           public Timestamp(Integer fullTime) {
               this.hour = fullTime / 100;
               this.minute = fullTime % 100;
@@ -50,7 +43,7 @@
 
       class LectureTime {
           public Integer day = 0;
-          public Timestamp start = new Timestamp(9, 0), finish = new Timestamp(10, 15);
+          public Timestamp start = new Timestamp(900), finish = new Timestamp(1015);
 
           @Override
           public String toString() {
@@ -125,31 +118,24 @@
     sb.append("];</script>");
     out.println(sb.toString());
   %>
-
-
-<div id="header">
-		
-<a id="home_ref" href="index_student.jsp">
-			
-<img src='logo.jpg'>
-	</div>
-	<div style= "float: right">
-		<a href="login.jsp">로그아웃</a>
-	</div>
-<br>	
-</a>	
-	<div id="nav">
-		<ul>	
-			<li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
-			<li> <a href="list_class.jsp">수업 목록 </a></li>
-			<li> <a href="search_class.jsp">수업 검색</a></li>
-			<li> <a href="wish_list.jsp">책가방</a></li>	
-			<li> <a href="timetable.jsp">시간표 보기</a></li>
-		</ul>
-	</div>
-	
+    <div id="header">
+        <a id="home_ref" href="index_student.jsp">	
+            <img src='logo.jpg'>
+        </a>	
+	</div>	
+    <br>
+    <div id="nav">
+        <ul>	
+            <li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
+            <li> <a href="list_class.jsp">수업 목록 </a></li>
+            <li> <a href="search_class.jsp">수업 검색</a></li>
+            <li> <a href="wish_list.jsp">책가방</a></li>	
+            <li> <a href="timetable.jsp">시간표 보기</a></li>
+            <li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
+        </ul>
+    </div>
 	<div id="content">
-		<h2>시간표 보기</h2>
+		<h2>시간표 보기!!</h2>
         <table id="time-table">
 
         </table>

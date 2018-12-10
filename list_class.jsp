@@ -36,8 +36,8 @@ background-color: #84B1ED; }
 <br>	
 </a>	
 	<div id="nav">
-		<ul>
-			<li> <a href="modify_class_student.jsp">수업 확인, 삭제</a></li>
+		<ul>	
+			<li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
@@ -45,7 +45,6 @@ background-color: #84B1ED; }
 			<li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 		</ul>
 	</div>
-	
 	<div id="content">
 		<h2>수업 목록 </h2>
 		<table id = "list">

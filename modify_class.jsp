@@ -44,6 +44,7 @@ background-color: #84B1ED; }
 			<img src='logo.jpg'>
 		</a>	
 	</div>
+	<br>
 	<div id="nav">
 		<ul>
 			<li> <a href="register_student.jsp">학생 등록</a></li>
