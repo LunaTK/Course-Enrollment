@@ -1,49 +1,58 @@
-table {
-	margin: auto;
+table{
+	margin:auto;
+}
+td{
+	text-align:right;
 }
 
-td {
-	text-align: right;
+label{
+	font-size:13pt;
 }
-
-label {
-	font-size: 13pt;
-}
-
-input {
-	margin: 5px;
-	font-size: 12pt;
+input{
+	margin:5px;
+	font-size:12pt;
 	background-color: inherit;
-	border: none;
-	border: 0.5px solid black;
+	border:none;
+	border:0.5px solid black;
 }
 
-.form_student {
-	float: center;
+.form_student_alpha {
 	position: relative;
 	z-index: 2;
 	background: #FFFFFF;
-	width: 430px;
-	height: 500px;
-	margin: 0 auto 100px;
-	padding: 45px;
-	text-align: center;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+	width:430px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
 
-.form_student input {
+.form_student {
+	float:center;
+	position: relative;
+	z-index: 2;
+	background: #FFFFFF;
+	width:430px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+}
+
+.form_student, .form_student_alpha input {
 	font-family: "Roboto", sans-serif;
-	outline: 0;
-	background: #f2f2f2;
-	width: 100%;
-	border: 0;
-	margin: 0 0 15px;
-	padding: 15px;
-	box-sizing: border-box;
-	font-size: 14px;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
-
-.form_student button {
+.form_student, .form_student_alpha button {
 	font-family: "Roboto", sans-serif;
 	text-transform: uppercase;
 	outline: 0;
@@ -53,55 +62,39 @@ input {
 	padding: 15px;
 	color: #FFFFFF;
 	font-size: 14px;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-.form_student button:hober,
-.form_student button:active,
-.form_student button:focus {
+  cursor: pointer;
+	border-radius:5px;
+}	.form_student,.form_student_alpha button:hober, .form_student,.form_student_alpha button:active, .form_student,.form_student_alpha button:focus {
 	background: #43A047;
-}
-
-.form_student input {
+} .form_student,.form_student_alpha input {
 	outline: 0;
 	width: 100%;
 }
 
-form {
-	display: flex;
-	flex-direction: column;
-}
-
-button[type=submit] {
-	margin: auto;
-}
-
 .form {
+	display: inline-block;
 	float: left;
 	position: relative;
 	z-index: 2;
 	background: #FFFFFF;
-	width: 430px;
-	height: 300px;
-	margin: 0 auto 100px;
-	padding: 45px;
-	text-align: center;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+	width: 300px;
+	height: 100%;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
-
 .form input {
 	font-family: "Roboto", sans-serif;
-	outline: 0;
-	background: #f2f2f2;
-	width: 100%;
-	border: 0;
-	margin: 0 0 15px;
-	padding: 15px;
-	box-sizing: border-box;
-	font-size: 14px;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
-
 .form button {
 	font-family: "Roboto", sans-serif;
 	text-transform: uppercase;
@@ -112,17 +105,11 @@ button[type=submit] {
 	padding: 15px;
 	color: #FFFFFF;
 	font-size: 14px;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-.form button:hober,
-.form button:active,
-.form button:focus {
+  cursor: pointer;
+	border-radius:5px;
+}	.form button:hober, .form button:active, .form button:focus {
 	background: #43A047;
-}
-
-.form input {
+} .form input {
 	outline: 0;
 	width: 100%;
 }
@@ -135,56 +122,52 @@ button[type=submit] {
 	overflow: auto;
 }
 
-#header {
-	text-align: center;
-	width: 100%;
-	height: 100px;
-	padding: 30px;
-}
-
-#nav {
-	width: 100%;
-	height: 40px;
-	font-size: 20px;
-	background-color: #008000;
-}
-
-#nav ul {
-	padding: 8px 3px 3px 3px;
-	text-align: center;
-}
-
-#nav ul li {
-	display: inline;
-	padding: 0px 30px;
-}
-
-#nav ul li {
-	background-color: #008000;
-	color: white;
-}
-
-#nav ul li a {
-	color: #f2f2f2;
-	text-align: center;
-	text-decoration: none;
-	font-size: 17px;
-}
-
-#nav ul li a:hover {
-	background-color: #008000;
-	text-decoration: none;
-	color: black
-}
-
-#content {
-	/* float: right; */
-	/* height: 300px; */
+.wrapper_div {
 	position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+#header{
+	text-align:center;
+	width:100%;
+	height:100px;
+	padding:30px;
+}
+#nav{
+	width:100%;
+	height:40px;
+	font-size:20px;
+	background-color:#008000;
+} #nav ul{
+	padding:8px 3px 3px 3px;
+	text-align:center;
+} #nav ul li{
+	display:inline;
+	padding:0px 30px;
+} #nav ul li {
+	background-color: #008000;
+	color:white;
+} #nav ul li a {
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+} #nav ul li a:hover{
+	background-color: #008000;
+	text-decoration:none;
+	color:black
+
+}
+
+#content{
+	position: relative;
+	overflow:hidden;
+	height:auto;
+	min-height: 300px;
 	z-index: 1;
 	background: #FFFFFF;
 	width: auto;
-	margin: 0 auto 100px;
-	padding: 45px;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
+  padding: 45px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.20);
 }
