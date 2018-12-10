@@ -79,7 +79,8 @@
       Statement statement = conn.createStatement();
         //int형으로 return값을 받는다. insert, update, delete, create를 수행
         //결과를 ResultSet으로 받는다.
-      ResultSet resultSet = statement.executeQuery("select * from class_time ct join (SELECT  c.*, student_number  from class c join enroll_list e on e.class_id = c.class_id) as ec on ct.class_id = ec.class_id where student_number = '" + session.getAttribute("student_number") + "';");
+      //ResultSet resultSet = statement.executeQuery("select * from class_time ct join (SELECT  c.*, student_number  from class c join enroll_list e on e.class_id = c.class_id) as ec on ct.class_id = ec.class_id where student_number = '" + session.getAttribute("student_number") + "';");
+      ResultSet resultSet = statement.executeQuery("select * from time_table where student_number = '" + session.getAttribute("student_number") + "';");
       while (resultSet.next()) {
           Statement lectureTimeQuery = conn.createStatement();
           int lecture_id = resultSet.getInt("class_id");
