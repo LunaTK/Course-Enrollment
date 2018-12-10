@@ -40,7 +40,7 @@ background-color: #84B1ED; }
 </a>	
 	<div id="nav">
 		<ul>
-			<li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
+			<li> <a href="modify_class_student.jsp">수업 확인, 삭제</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
@@ -120,17 +120,17 @@ con = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.
 
 
 	<tr>
-		<td><%=rs.getString(5)%></td>
-		<td><%=rs.getString(6)%></td>
 		<td><%=rs.getString(4)%></td>
-		<td><%=rs.getString(9)%></td>
-		<td><%=rs.getString(3)%></td>
-		<td><%=rs.getString(8)%></td>
-		<td><%=rs.getString(7)%></td>
-		<td><%= start %></td>
-		<td><%= ed %></td>
-		<td><%= day %></td>
-		<td><%=rs.getString(10)%></td>
+			<td><%=rs.getString(5)%></td>
+			<td><%=rs.getString(3)%></td>
+			<td><%=rs.getString(8)%></td>
+			<td><%=rs.getString(2)%></td>
+			<td><%=rs.getString(7)%></td>
+			<td><%=rs.getString(6)%></td>
+			<td><%= start %></td>
+			<td><%= ed %></td>
+			<td><%= day %></td>
+			<td><%=rs.getString(9)%></td>
 		
 	<td><a href="getting.jsp?get=<%=rs.getString(1)%>" >신청하기</a>
 	</td>
