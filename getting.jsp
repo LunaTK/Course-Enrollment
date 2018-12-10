@@ -9,6 +9,7 @@ int class_people = 0;
 int credit = 0;
 int all = 0;
 int allow = 0;
+int i;
 
  try{
 					Class.forName("com.mysql.jdbc.Driver");
@@ -34,7 +35,16 @@ int allow = 0;
 						class_people = rst.getInt("class_people");
 						credit = rst.getInt("class_credit");
 					}
-					
+					if(class_people >= 4){
+						String query2 = "UPDATE class SET class_state = '진행중' where class_id='" + request.getParameter("get")+"'";
+  //쿼리문 전송
+	stm.executeUpdate(query2);
+					}
+					if(class_people == (MAX - 1)){
+						String query3 = "UPDATE class SET class_state = '신청 종료' where class_id='" + request.getParameter("get")+"'";
+  //쿼리문 전송
+	stm.executeUpdate(query3);
+					}
 					if(MAX <= class_people){
 						stm.close();
 						con.close();
@@ -72,7 +82,6 @@ int allow = 0;
   String query = "UPDATE class SET class_people = class_people + 1 where class_id='" + request.getParameter("get")+"'";
   //쿼리문 전송
   stm.executeUpdate(query);
-  
   
 		
   
