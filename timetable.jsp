@@ -18,7 +18,12 @@
 <title>시간표</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" media="screen" href="css/timetable.css" />
-
+<link rel="stylesheet" type="text/css" media="screen" href="css/admin.css" />
+<%
+    if(session.getAttribute("student_number")==null){
+        out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='login.jsp';</script>");
+    }
+%>
 <body>
     <%
 
@@ -81,7 +86,7 @@
       Statement statement = conn.createStatement();
         //int형으로 return값을 받는다. insert, update, delete, create를 수행
         //결과를 ResultSet으로 받는다.
-      ResultSet resultSet = statement.executeQuery("select * from class;");
+      ResultSet resultSet = statement.executeQuery("select * from class_time ct join (SELECT  c.*, student_number  from class c join enroll_list e on e.class_id = c.class_id) as ec on ct.class_id = ec.class_id where student_number = '" + session.getAttribute("student_number") + "';");
       while (resultSet.next()) {
           Statement lectureTimeQuery = conn.createStatement();
           int lecture_id = resultSet.getInt("class_id");
@@ -120,9 +125,35 @@
     sb.append("];</script>");
     out.println(sb.toString());
   %>
-    <table id="time-table">
 
-    </table>
+
+<div id="header">
+		
+<a id="home_ref" href="index_student.jsp">
+			
+<img src='logo.jpg'>
+	</div>
+	<div style= "float: right">
+		<a href="login.jsp">로그아웃</a>
+	</div>
+<br>	
+</a>	
+	<div id="nav">
+		<ul>	
+			<li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
+			<li> <a href="list_class.jsp">수업 목록 </a></li>
+			<li> <a href="search_class.jsp">수업 검색</a></li>
+			<li> <a href="wish_list.jsp">책가방</a></li>	
+			<li> <a href="timetable.jsp">시간표 보기</a></li>
+		</ul>
+	</div>
+	
+	<div id="content">
+		<h2>시간표 보기</h2>
+        <table id="time-table">
+
+        </table>
+    </div>
     <script src="js/timetable.js"></script>
 </body>
 
