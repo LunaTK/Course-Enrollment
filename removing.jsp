@@ -18,6 +18,9 @@ int class_people = 0;
   ResultSet rset = stmt.executeQuery(sqlStr);
   int class_id = Integer.parseInt(id);
 	String number = (String)session.getAttribute("student_number");
+	if(number == null){
+			out.println("<script type=\"text/javascript\">alert('로그인이 필요합니다.');location='index.html';</script>");
+		}
   while(rset.next()){
 	  if(rset.getString(3).equals(number)){
 		  String qu = "DELETE FROM wish_list where class_id = '" + request.getParameter("del") + "'";
@@ -33,7 +36,7 @@ int class_people = 0;
   stmt.close();
   co.close();
   conn.close();
-response.sendRedirect("wish_list.jsp");
+out.println("<script type=\"text/javascript\">alert('강의가 책가방에서 삭제 되었습니다.');location='list_class.jsp';</script>");
  }
   catch(Exception e){
   out.println( e );
