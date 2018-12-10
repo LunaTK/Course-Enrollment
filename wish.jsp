@@ -14,15 +14,15 @@
 	if(id != null){	
 		String number = (String)session.getAttribute("student_number");
 		if(number == null){
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("index.html");
 		}
   String Str = "select * from wish_list";
   ResultSet rset = stm.executeQuery(Str);
   while(rset.next()){
 	  if(rset.getString(2).equals(request.getParameter("del")) && rset.getString(3).equals(number)){
 		stm.close();
-  con.close();
-		response.sendRedirect("list_class.jsp");
+		con.close();
+		out.println("<script type=\"text/javascript\">alert('해당 강의가 이미 책가방에 있습니다.');location='list_class.jsp';</script>");
 	  }
   }
   int student_number =  Integer.parseInt(number);
@@ -35,7 +35,7 @@
 				preparedStmt.close();
   stm.close();
   con.close();
-  response.sendRedirect("list_class.jsp");
+  out.println("<script type=\"text/javascript\">alert('책가방에 담겼습니다.');location='list_class.jsp';</script>");
 }
  }
   catch(Exception e){
