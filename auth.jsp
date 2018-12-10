@@ -33,7 +33,7 @@
 
         if (studentRS.next()) { // 학생 로그인 성공인
             session.setAttribute("student_number", uid);
-            redirectUrl = "index_student.html?id=" + id; // 학생 메인 페이지
+            redirectUrl = "index_student.jsp?id=" + id; // 학생 메인 페이지
         } else if (adminRS.next()) {
             session.setAttribute("is_admin", true);
             redirectUrl = "index_admin.jsp"; // 어드민 페이지
