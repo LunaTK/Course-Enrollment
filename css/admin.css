@@ -86,6 +86,17 @@ input {
     width: 100%;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+button[type="submit"],
+button.submit_btn {
+    margin: auto;
+}
+
+
 .form {
     display: inline-block;
     float: left;
