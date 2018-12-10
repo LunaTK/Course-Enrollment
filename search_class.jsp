@@ -24,7 +24,7 @@ background-color: #84B1ED; }
 		}
 	%>
 	<div id="header">
-		<a id="home_ref" href="index_student.html">
+		<a id="home_ref" href="index_student.jsp">
 			<img src='logo.jpg'>
 		</a>	
 	</div>
