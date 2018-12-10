@@ -1,34 +1,45 @@
 @import url("https://fonts.googleapis.com/css?family=Nanum+Gothic");
+
 * {
-  font-family: 'Nanum Gothic', sans-serif; }
+  font-family: 'Nanum Gothic', sans-serif;
+}
 
 table {
   border-spacing: 0px;
-  border-collapse: collapse; }
-  table td {
-    display: table-cell;
-    border: 1px solid #666666;
-    margin: 0px;
-    min-width: 60px;
-    height: 50px;
-    position: relative;
-    padding: 0; }
-    table td:first-of-type {
-      min-width: inherit;
-      background-color: #aed581;
-      text-align: center;
-      padding: 2px; }
-  table tr:first-of-type td {
-    height: auto;
-    background-color: #00acc1;
-    text-align: center;
-    padding: 2px; }
-  table .lecture-cell {
-    box-sizing: border-box;
-    padding: 3px;
-    width: 100%;
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    font-size: 15%;
-    line-break: white-space; }
+  border-collapse: collapse;
+}
+
+table td {
+  display: table-cell;
+  border: 1px solid #666666;
+  margin: 0px;
+  min-width: 60px;
+  height: 50px;
+  position: relative;
+  padding: 0;
+}
+
+table td:first-of-type {
+  min-width: inherit;
+  background-color: #aed581;
+  text-align: center;
+  padding: 2px;
+}
+
+table tr:first-of-type td {
+  height: auto;
+  background-color: #00acc1;
+  text-align: center;
+  padding: 2px;
+}
+
+table .lecture-cell {
+  box-sizing: border-box;
+  padding: 3px;
+  width: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  font-size: 25%;
+  line-break: white-space;
+}
