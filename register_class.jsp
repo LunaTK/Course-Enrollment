@@ -145,45 +145,48 @@
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection("jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course", "lunatk", "Thtlf1210");
-				}
-				catch(Exception e){
-					out.println("데이터베이스 접속에 문제가 있습니다. <hr>");
-					out.println(e.getMessage());
-					e.printStackTrace();
-				}
-				stmt = conn.createStatement();
-				//insert into class table 
-				sqlStr = "INSERT INTO class (class_credit, class_max_people, class_name, class_professor, class_room, class_year, class_people, class_state) values (?,?,?,?,?,?,?,?)";
-				preparedStmt = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);
-				preparedStmt.setInt(1, class_credit);
-				preparedStmt.setInt(2, class_max_people);
-				preparedStmt.setString(3, class_name);
-				preparedStmt.setString(4, class_professor);
-				preparedStmt.setInt(5, class_room);
-				preparedStmt.setInt(6, class_year);
-				preparedStmt.setInt(7, 0);
-				preparedStmt.setString(8, "폐강");
-				preparedStmt.execute();
-				rs = preparedStmt.getGeneratedKeys();
-				if(rs.next()){
-					sqlStr = "SELECT class_id from class where class_id="+String.valueOf(rs.getInt(1));
-					
-					ResultSet rset = stmt.executeQuery(sqlStr);
-					if(rset.next()){
-						int class_id = rset.getInt("class_id");
-						out.println(class_id);
-						for(i=0;i<start_time.length;i++){
-							sqlStr = "INSERT INTO class_time (class_id, start_time, end_time, day_of_class) values (?,?,?,?)";
-							preparedStmt = conn.prepareStatement(sqlStr);
-							preparedStmt.setInt(1, class_id);
-							preparedStmt.setInt(2, start_time[i]);
-							preparedStmt.setInt(3, end_time[i]);
-							preparedStmt.setString(4, day_of_clas[i]);
-							preparedStmt.execute();
+					stmt = conn.createStatement();
+					//insert into class table 
+					sqlStr = "INSERT INTO class (class_credit, class_max_people, class_name, class_professor, class_room, class_year, class_people, class_state) values (?,?,?,?,?,?,?,?)";
+					preparedStmt = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);
+					preparedStmt.setInt(1, class_credit);
+					preparedStmt.setInt(2, class_max_people);
+					preparedStmt.setString(3, class_name);
+					preparedStmt.setString(4, class_professor);
+					preparedStmt.setInt(5, class_room);
+					preparedStmt.setInt(6, class_year);
+					preparedStmt.setInt(7, 0);
+					preparedStmt.setString(8, "폐강");
+					preparedStmt.execute();
+					rs = preparedStmt.getGeneratedKeys();
+					if(rs.next()){
+						sqlStr = "SELECT class_id from class where class_id="+String.valueOf(rs.getInt(1));
+						
+						ResultSet rset = stmt.executeQuery(sqlStr);
+						if(rset.next()){
+							int class_id = rset.getInt("class_id");
+							out.println(class_id);
+							for(i=0;i<start_time.length;i++){
+								sqlStr = "INSERT INTO class_time (class_id, start_time, end_time, day_of_class) values (?,?,?,?)";
+								preparedStmt = conn.prepareStatement(sqlStr);
+								preparedStmt.setInt(1, class_id);
+								preparedStmt.setInt(2, start_time[i]);
+								preparedStmt.setInt(3, end_time[i]);
+								preparedStmt.setString(4, day_of_clas[i]);
+								preparedStmt.execute();
+							}
 						}
 					}
+					rs.close();
+					preparedStmt.close();
+					stmt.close();
+					conn.close();
+					out.println("<script>alert('수업이 등록 되었습니다.');</script>");
 				}
-				out.println("<script>alert('수업이 등록 되었습니다.');</script>");
+				catch (SQLException e) {
+			        out.println("err:"+e.toString());
+			    }
+				
 			}
 			
 		%>

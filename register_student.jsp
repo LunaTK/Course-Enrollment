@@ -22,7 +22,7 @@
 	<div style= "float: right">
 		<a href="logout.jsp">로그아웃</a>
 	</div>
-<br>
+	<br>
 	<div id="nav">
 		<ul>
 			<li> <a href="register_student.jsp">학생 등록</a></li>
@@ -67,25 +67,26 @@
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection("jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course", "lunatk", "Thtlf1210");
+					stmt = conn.createStatement();
+					//insert into student_id_pswd table 
+					sqlStr = "INSERT INTO student (student_number, student_pswd, allowed_credit, student_year, student_name) values (?,?,?,?,?)";
+					preparedStmt = conn.prepareStatement(sqlStr);
+					preparedStmt.setInt(1, student_number);
+					preparedStmt.setString(2, student_pswd);
+					preparedStmt.setInt(3, allowed_credit);
+					preparedStmt.setInt(4, student_year);
+					preparedStmt.setString(5, student_name);
+					preparedStmt.execute();
+					stmt.close();
+					preparedStmt.close();
+					conn.close();
+					//insert into student_credit_year table
+					out.println("<script>alert('학생이 등록 되었습니다.');</script>");
 				}
-				catch(Exception e){
-					out.println("데이터베이스 접속에 문제가 있습니다. <hr>");
-					out.println(e.getMessage());
-					e.printStackTrace();
-				}
-				stmt = conn.createStatement();
-				//insert into student_id_pswd table 
-				sqlStr = "INSERT INTO student (student_number, student_pswd, allowed_credit, student_year, student_name) values (?,?,?,?,?)";
-				preparedStmt = conn.prepareStatement(sqlStr);
-				preparedStmt.setInt(1, student_number);
-				preparedStmt.setString(2, student_pswd);
-				preparedStmt.setInt(3, allowed_credit);
-				preparedStmt.setInt(4, student_year);
-				preparedStmt.setString(5, student_name);
-				preparedStmt.execute();
-
-				//insert into student_credit_year table
-				out.println("<script>alert('학생이 등록 되었습니다.');</script>");
+				catch (SQLException e) {
+			        out.println("err:"+e.toString());
+			    }
+					
 			}
 		%>
 	</div>

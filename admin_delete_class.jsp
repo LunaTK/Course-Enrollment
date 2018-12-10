@@ -41,6 +41,9 @@
         else{
             out.println("<script>alert('폐강 상태가 아니라 삭제할 수 없습니다.');</script>");
         }
+        rs.close();
+        stmt.close();
+        conn.close();
         out.println("<script type=\"text/javascript\">location='" + redirectUrl +"';</script>");
 
 	}
