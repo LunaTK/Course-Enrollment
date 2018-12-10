@@ -1,4 +1,4 @@
-﻿<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html;charset=utf-8"
     pageEncoding="utf-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
@@ -19,6 +19,10 @@
 			<img src='logo.jpg'>
 		</a>	
 	</div>
+	<div style= "float: right">
+		<a href="index.html">로그아웃</a>
+	</div>
+<br>
 	<div id="nav">
 		<ul>
 			<li> <a href="register_student.jsp">학생 등록</a></li>
