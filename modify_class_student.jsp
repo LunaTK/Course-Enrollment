@@ -46,7 +46,7 @@ background-color: #84B1ED; }
 	</div>
 	
 	<div id="content">
-		<h2>책가방 </h2>
+		<h2>수강신청 확정내역 </h2>
 		<table id = "list">
 <form action="getting.jsp" method="post">
 		<table id = "list" border="3" cellspacing="3">
