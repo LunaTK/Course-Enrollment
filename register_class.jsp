@@ -1,11 +1,11 @@
-﻿<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html;charset=utf-8"
     pageEncoding="utf-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
 <html>
 <head>
 	<title> 수업 등록 </title>
-	<link rel="stylesheet" href="css/admin.css">
+	<link rel="stylesheet" href="./css/admin.css?ver=51">
 	<script>
 		var time_count = 1;
 		function add_time(){
@@ -54,10 +54,7 @@
 	<div id="header">
 		<a id="home_ref" href="index_admin.jsp">
 			<img src='logo.jpg'>
-		</a>	
-	</div>
-	<div style= "float: right">
-		<a href="logout.jsp">로그아웃</a>
+		</a>
 	</div>
 	<br>
 	<div id="nav">
@@ -67,49 +64,88 @@
 			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
 			<li> <a href="list_class_admin.jsp">수업 목록 </a></li>
 			<li> <a href="search_class_admin.jsp">수업 검색</a></li>
+      <li style="float:right; text-transform: uppercase;"> <a class="logout" href="logout.jsp">logout</a></li>
 		</ul>
 	</div>
-	<div id="content">
-		<h2>수업 등록 </h2>
+	<div class="form_student" style="height:850px;">
+		<h2 align=center>수업 등록 </h2>
 		<form method="post">
 			<input id="time_count" name="time_count" type="hidden" value=1>
-			<table>
+			<table style="width:400px">
 				<tbody id="class_tbody">
-					<tr><td><label>강의명</label></td>
-					<td><input name="class_name" type="text" required></td></tr>
-					<tr><td><label>강사명</label></td>
-					<td><input name="class_professor" type="text" required></td></tr>
-					<tr><td><label>수강인원</label></td>
-					<td><input name="class_max_people" type="number" required></td></tr>
-					<tr><td><label>강의실</label></td>
-					<td><input name="class_room" type="number" required></td></tr>
-					<tr><td><label>수강대상학년</label></td>
-					<td><input name="class_year" type="number" required></td></tr>
-					<tr><td><label>수강학점</label></td>
-					<td><input name="class_credit" type="number" required></td></tr>
-					<tr><td><label>강의 요일 </label></td>
-						<td><input name="day_of_class0" type="radio" value="0" required>월
-							<input name="day_of_class0" type="radio" value="1">화
-							<input name="day_of_class0" type="radio" value="2">수
-							<input name="day_of_class0" type="radio" value="3">목
-							<input name="day_of_class0" type="radio" value="4">금
-						</td>	
+					<tr>
+					  <td>
+               <input name="class_name" type="text" required placeholder="강의명">
+            </td>
+          </tr>
+					<tr>
+					  <td>
+               <input name="class_professor" type="text" required placeholder="강사명">
+            </td>
+          </tr>
+					<tr>
+					  <td>
+              <input name="class_max_people" type="number" required placeholder="수강인원">
+            </td>
+          </tr>
+					<tr>
+					  <td>
+              <input name="class_room" type="number" required placeholder="강의실">
+            </td>
+          </tr>
+					<tr>
+					  <td>
+              <input name="class_year" type="number" required placeholder="수강대상학년">
+            </td>
+          </tr>
+					<tr>
+            <td>
+              <input name="class_credit" type="number" required placeholder="수강학년">
+            </td>
+          </tr>
+          <tr>
+						<td>
+              <div class="controls">
+                강의요일 &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <input id="mon" name="day_of_class0" type="radio" value="0" required></input>
+                <label for="mon" class="radio">월</label>
+
+  							<input id="thu" name="day_of_class0" type="radio" value="1">
+                <label for="thu" class="radio">화</label>
+
+                <input id="wed" name="day_of_class0" type="radio" value="2">
+                <label for="wed" class="radio">수</label>
+
+  							<input id="thr" name="day_of_class0" type="radio" value="3">
+                <label for="thr" class="radio">목</label>
+
+  							<input id="fri" name="day_of_class0" type="radio" value="4">
+                <label for="fri" class="radio">금</label>
+              </div>
+              <br>
+						</td>
 					</tr>
-					<tr><td><label>시작시간</label></td>
-					<td><input name="start_time" type="number" required></td></tr>
-					<tr><td><label>종료시간</label></td>
-					<td><input name="end_time" type="number" required></td></tr>
+					<tr>
+					  <td>
+              <input name="start_time" type="number" required placeholder="시작시간">
+            </td>
+          </tr>
+					<tr>
+					  <td>
+              <input name="end_time" type="number" required placeholder="종료시간">
+            </td>
+          </tr>
 				</tbody>
 			</table>
 			<br>
-			<div align="center">
-				<button type="button" class="register_btn" onclick="add_time();">강의 시간 추가</button>/
+				<button type="button" class="register_btn" onclick="add_time();">강의 시간 추가</button>
+      <br>
 				<button type="button" class="register_btn" onclick="delete_time();">삭제</button>
-			</div>
 			<br>
-			<button type="submit" class="register_btn">등록 </button>
+			  <button type="submit" class="register_btn">등록 </button>
 		</form>
-		
+
 		<%
 			String class_name = request.getParameter("class_name");
 			String class_professor = request.getParameter("class_professor");
@@ -148,7 +184,7 @@
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection("jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course", "lunatk", "Thtlf1210");
 					stmt = conn.createStatement();
-					//insert into class table 
+					//insert into class table
 					sqlStr = "INSERT INTO class (class_credit, class_max_people, class_name, class_professor, class_room, class_year, class_people, class_state) values (?,?,?,?,?,?,?,?)";
 					preparedStmt = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);
 					preparedStmt.setInt(1, class_credit);
@@ -163,7 +199,7 @@
 					rs = preparedStmt.getGeneratedKeys();
 					if(rs.next()){
 						sqlStr = "SELECT class_id from class where class_id="+String.valueOf(rs.getInt(1));
-						
+
 						ResultSet rset = stmt.executeQuery(sqlStr);
 						if(rset.next()){
 							int class_id = rset.getInt("class_id");
@@ -188,9 +224,9 @@
 				catch (SQLException e) {
 			        out.println("err:"+e.toString());
 			    }
-				
+
 			}
-			
+
 		%>
 	</div>
 </body>
