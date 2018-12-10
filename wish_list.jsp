@@ -120,6 +120,7 @@ public String ChangeFormat(String time) {
 								day = day + dayStr[rd.getInt(4)] + "<br />";
 							} // end while
 							rd.close();
+							if(rc.getString(3).equals(session.getAttribute("student_number"))){
 		%>
 <tr>
 		<td><%=rs.getString(5)%></td>
@@ -139,6 +140,7 @@ public String ChangeFormat(String time) {
 		</td>
 	  </tr>
 	<%
+							}
 				}
 			}
 			rs.close();
