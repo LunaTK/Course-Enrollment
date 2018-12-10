@@ -34,7 +34,7 @@ background-color: #84B1ED; }
 <br>
 	<div id="nav">
 		<ul>
-			<li> <a href="modify_class.jsp">수업 수정, 삭제</a></li>
+			<li> <a href="modify_class_student.jsp">수업 수정, 삭제</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
