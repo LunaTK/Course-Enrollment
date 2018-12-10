@@ -111,6 +111,11 @@ input {
 	font-size: 14px;
 }
 
+button[type=submit],
+button.register_btn {
+	margin: auto;
+}
+
 .form button {
 	font-family: "Roboto", sans-serif;
 	text-transform: uppercase;
