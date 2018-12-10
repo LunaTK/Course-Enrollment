@@ -19,7 +19,7 @@ int class_people = 0;
   int class_id = Integer.parseInt(id);
 	String number = (String)session.getAttribute("student_number");
 	if(number == null){
-			out.println("<script type=\"text/javascript\">alert('로그인이 필요합니다.');location='login.jsp';</script>");
+			out.println("<script type=\"text/javascript\">alert('로그인이 필요합니다.');location='index.html';</script>");
 		}
   while(rset.next()){
 	  if(rset.getString(3).equals(number)){
@@ -31,8 +31,27 @@ int class_people = 0;
 		st.close();			
 	String query = "UPDATE class SET class_people = class_people - 1 where class_id='" + request.getParameter("del")+"'";
   //쿼리문 전송
-  stmt.executeUpdate(query);		
+  stmt.executeUpdate(query);	
   
+  String sqlSt = "select * from class where class_id = '"+ request.getParameter("del")+"'";
+ 
+		
+  ResultSet rst = stmt.executeQuery(sqlSt);
+					if(rst.next()){
+						MAX = rst.getInt("class_max_people");
+						class_people = rst.getInt("class_people");
+					}
+					
+					if(class_people < MAX){
+						String query3 = "UPDATE class SET class_state = '진행중' where class_id='" + request.getParameter("del")+"'";
+			//쿼리문 전송
+			stmt.executeUpdate(query3);
+					}
+					if(class_people < 5){
+						String query2 = "UPDATE class SET class_state = '폐강' where class_id='" + request.getParameter("del")+"'";
+			//쿼리문 전송
+			stmt.executeUpdate(query2);
+					}
   //쿼리문 전송
   st.close();
   stmt.close();
