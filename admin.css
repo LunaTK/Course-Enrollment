@@ -188,7 +188,7 @@ input {
 
 #content {
 	/* float: right; */
-	height: 300px;
+	/* height: 300px; */
 	position: relative;
 	z-index: 1;
 	background: #FFFFFF;
