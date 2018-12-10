@@ -8,7 +8,7 @@
     ResultSet studentRS = null;
     ResultSet adminRS = null;
     Statement stmt = null;
-    String redirectUrl = "index.html";
+    String redirectUrl = "login.jsp";
     try{
         ResourceBundle resource = ResourceBundle.getBundle("sw4/dbconfig");
         String url=resource.getString("url");
@@ -33,14 +33,17 @@
 
         if (studentRS.next()) { // 학생 로그인 성공인
             session.setAttribute("student_number", uid);
-            redirectUrl = "index_student.jsp?id=" + id; // 학생 메인 페이지
+            session.removeAttribute("is_admin");
+            redirectUrl = "index_student.jsp"; // 학생 메인 페이지
         } else if (adminRS.next()) {
             session.setAttribute("is_admin", true);
+            session.removeAttribute("student_number");
             redirectUrl = "index_admin.jsp"; // 어드민 페이지
         } else {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('로그인 실패');");
             out.println("</script>");
+            session.invalidate();
         }
 
      //   response.sendRedirect(redirectUrl);

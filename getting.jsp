@@ -15,7 +15,7 @@ int class_people = 0;
 					int class_id = Integer.parseInt(id);
 		 String number = (String)session.getAttribute("student_number");
 		if(number == null){
-			response.sendRedirect("index.html");
+			response.sendRedirect("login.jsp");
 		}
   String sqlStr = "select * from class where class_id = '"+ request.getParameter("get")+"'";
  

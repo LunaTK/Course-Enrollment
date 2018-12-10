@@ -14,7 +14,7 @@
 	if(id != null){	
 		String number = (String)session.getAttribute("student_number");
 		if(number == null){
-			response.sendRedirect("index.html");
+			response.sendRedirect("login.jsp");
 		}
   String Str = "select * from wish_list";
   ResultSet rset = stm.executeQuery(Str);

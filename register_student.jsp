@@ -11,7 +11,7 @@
 <body>
 	<%
 		if(session.getAttribute("is_admin")==null){
-			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='login.jsp';</script>");
 		}
 	%>
 	<div id="header">
@@ -20,7 +20,7 @@
 		</a>	
 	</div>
 	<div style= "float: right">
-		<a href="index.html">로그아웃</a>
+		<a href="logout.jsp">로그아웃</a>
 	</div>
 <br>
 	<div id="nav">

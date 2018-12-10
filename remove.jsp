@@ -19,7 +19,7 @@ int class_people = 0;
   int class_id = Integer.parseInt(id);
 	String number = (String)session.getAttribute("student_number");
 	if(number == null){
-			out.println("<script type=\"text/javascript\">alert('로그인이 필요합니다.');location='index.html';</script>");
+			out.println("<script type=\"text/javascript\">alert('로그인이 필요합니다.');location='login.jsp';</script>");
 		}
   while(rset.next()){
 	  if(rset.getString(3).equals(number)){

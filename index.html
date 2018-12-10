@@ -10,7 +10,7 @@
 
 <body>
 	<div id="header">
-		<a id="home_ref" href="index.html">
+		<a id="home_ref" href="login.jsp">
 			<img src='logo.jpg'></img>
 		</a>
 	</div>
