@@ -20,7 +20,7 @@
 <body> 
 	<%
 		if(session.getAttribute("is_admin")==null){
-			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='login.jsp';</script>");
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
 		}
 	%>
 	<div id="header">
@@ -29,7 +29,7 @@
 		</a>	
 	</div>
 	<div style= "float: right">
-<a href="logout.jsp">로그아웃</a>
+		<a href="index.html">로그아웃</a>
 	</div>
 <br>
 	<div id="nav">
@@ -55,6 +55,7 @@
 				<th> 시작 시간 </th>  
 				<th> 끝나는 시간</th>  
 				<th> 강의 날짜</th>  
+				<th> 신청상태</th>  
 				<th> 수정하기 </th>  
 				<th> 삭제 </th>  
 			</tr>
@@ -109,16 +110,17 @@
 						rc.close();
 			%>
 			<tr>
-				<td><%=rs.getString(5)%></td>
-				<td><%=rs.getString(6)%></td>
 				<td><%=rs.getString(4)%></td>
-				<td><%=rs.getString(9)%></td>
-				<td><%=rs.getString(3)%></td>
-				<td><%=rs.getString(8)%></td>
-				<td><%=rs.getString(7)%></td>
-				<td><%= start %></td>
-				<td><%= ed %></td>
-				<td><%= day %></td>
+			<td><%=rs.getString(5)%></td>
+			<td><%=rs.getString(3)%></td>
+			<td><%=rs.getString(8)%></td>
+			<td><%=rs.getString(2)%></td>
+			<td><%=rs.getString(7)%></td>
+			<td><%=rs.getString(6)%></td>
+			<td><%= start %></td>
+			<td><%= ed %></td>
+			<td><%= day %></td>
+			<td><%=rs.getString(9)%></td>
 				
 				<td><a href="admin_modify_class.jsp?class_id=<%=rs.getString(1)%>">수정하기</a></td>
 				<td><a href="admin_delete_class.jsp?class_id=<%=rs.getString(1)%>">삭제</a></td>
