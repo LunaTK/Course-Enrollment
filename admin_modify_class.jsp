@@ -120,7 +120,6 @@
 					i +=1;
 				}
 				i=0;
-				preparedStmt.close();
 				stmt.close();
 				conn.close();
 			}
@@ -253,7 +252,6 @@
 					
 					
 					out.println("<script>alert('수업이 수정 되었습니다.');</script>");
-					rs.close();
 					pStmt.close();
 					preparedStmt.close();
 					stmt.close();
