@@ -46,6 +46,8 @@
 	
 <li> <a href="wish_list.jsp">책가방</a>
 </li>	
+<li> <a href="timetable.jsp">시간표 보기</a>
+</li>
 </ul>
 	
 </div>

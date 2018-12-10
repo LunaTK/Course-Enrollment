@@ -44,6 +44,7 @@ background-color: #84B1ED; }
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
+			<li> <a href="timetable.jsp">시간표 보기</a></li>
 		</ul>
 	</div>
 	
