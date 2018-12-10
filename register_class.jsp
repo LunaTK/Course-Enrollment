@@ -100,7 +100,7 @@
           </tr>
 					<tr>
             <td>
-              <input name="class_credit" type="number" required placeholder="수강학년">
+              <input name="class_credit" type="number" required placeholder="학점">
             </td>
           </tr>
           <tr>

@@ -36,12 +36,12 @@
 			<table style="width:400px">
 				<tr>
 					<td>
-						<input name="student_id" type="text" placeholder="학번"></input>
+						<input name="student_number" type="text" placeholder="학번"></input>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input name="password" type="password" placeholder="비밀번호">
+						<input name="student_pswd" type="password" placeholder="비밀번호">
 					</td>
 				</tr>
 				<tr>
@@ -51,12 +51,12 @@
 				</tr>
 				<tr>
 					<td>
-						<input name="year" type="number" placeholder="학년">
+						<input name="student_year" type="number" placeholder="학년">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input name="possible_credit" type="number" placeholder="허용학점">
+						<input name="allowed_credit" type="number" placeholder="허용학점">
 					</td>
 				</tr>
 			</table>

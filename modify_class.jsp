@@ -86,16 +86,16 @@ background-color: #84B1ED; }
 		<form action="getting.jsp" method="post">
 	<table id = "list" border="3" cellspacing="3">
 	<tr class>
-	<th> 강의명 </th>
 		<th> 강사명 </th>
+		<th> 강의실 </th>
+		<th> 강의명 </th>  
+		<th> 상태 </th>  
 		<th> 신청인원 </th>  
-		<th> 허용인원 </th>  
-		<th> 학점 </th>  
-		<th> 수강 대상 학년 </th> 
-		<th> 강의실 </th> 
+		<th> 허용인원 </th> 
+		<th> 학점 </th> 
 		<th> 시작 시간 </th>  
 		<th> 끝나는 시간</th>  
-		<th> 강의 날짜</th>  
+		<th> 강의 요일</th>  
 		<th> 수정하기 </th>  
 		<th> 삭제 </th> 
 	</tr>	
