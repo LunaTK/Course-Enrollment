@@ -29,7 +29,9 @@ int class_people = 0;
 	  }
   }
 		st.close();			
-					
+	String query = "UPDATE class SET class_people = class_people - 1 where class_id='" + request.getParameter("del")+"'";
+  //쿼리문 전송
+  stmt.executeUpdate(query);		
   
   //쿼리문 전송
   st.close();
