@@ -20,7 +20,7 @@ background-color: #84B1ED; }
 <body>
 <%
 		if(session.getAttribute("student_number")==null){
-			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='login.jsp';</script>");
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
 		}
 	%>
 	<div id="header">
@@ -29,12 +29,12 @@ background-color: #84B1ED; }
 		</a>	
 	</div>
 	<div style= "float: right">
-		<a href="logout.jsp">로그아웃</a>
+		<a href="index.html">로그아웃</a>
 	</div>
 <br>
 	<div id="nav">
 		<ul>
-			<li> <a href="modify_class_student.jsp">수업 확인, 삭제</a></li>
+			<li> <a href="modify_class_student.jsp">수업 수정, 삭제</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
@@ -81,6 +81,7 @@ background-color: #84B1ED; }
 		<th> 시작 시간 </th>  
 		<th> 끝나는 시간</th>  
 		<th> 강의 날짜</th>  
+		<th> 신청 상태</th>  
 		<th> 신청하기 </th>  
 		<th> 담기 </th>  
 	</tr>	
@@ -163,6 +164,7 @@ background-color: #84B1ED; }
 			<td><%= start %></td>
 			<td><%= ed %></td>
 			<td><%= day %></td>
+			<td><%=rs.getString(10)%></td>
 			<td><a href="getting.jsp?get=<%=rs.getString(1)%>">신청하기</a>
 			</td>
 			<td><a href="wish.jsp?del=<%=rs.getString(1)%>">담기</a>
