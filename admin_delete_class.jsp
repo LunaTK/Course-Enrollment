@@ -32,10 +32,15 @@
             }
         }
         if(is_closed){
-            sqlStr = "DELETE FROM class WHERE class_id="+class_id;
+            sqlStr = "SET foreign_key_checks = 0;";
             stmt.executeUpdate(sqlStr);
             sqlStr = "DELETE FROM class_time WHERE class_id="+class_id;
             stmt.executeUpdate(sqlStr);
+            sqlStr = "DELETE FROM class WHERE class_id="+class_id;
+            stmt.executeUpdate(sqlStr);
+            sqlStr = "SET foreign_key_checks = 0;";
+            stmt.executeUpdate(sqlStr);
+            
             out.println("<script>alert('수업이 삭제 되었습니다.');</script>");
         }
         else{
