@@ -22,7 +22,7 @@ background-color: #84B1ED; }
 <body> 
 	<%
 		if(session.getAttribute("student_number")==null){
-			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='login.jsp';</script>");
+			out.println("<script type=\"text/javascript\">alert('권한이 필요합니다. 로그인을 해주세요.');location='index.html';</script>");
 		}
 	%>
 <div id="header">
@@ -32,22 +32,21 @@ background-color: #84B1ED; }
 <img src='logo.jpg'>
 	</div>
 	<div style= "float: right">
-		<a href="login.jsp">로그아웃</a>
+		<a href="index.html">로그아웃</a>
 	</div>
 <br>	
 </a>	
 	<div id="nav">
 		<ul>	
-			<li> <a href="modify_class_student.jsp">수강신청 확정내역</a></li>
+			<li> <a href="modify_class_student.jsp">수업 확인, 삭제</a></li>
 			<li> <a href="list_class.jsp">수업 목록 </a></li>
 			<li> <a href="search_class.jsp">수업 검색</a></li>
 			<li> <a href="wish_list.jsp">책가방</a></li>	
-			<li> <a href="timetable.jsp">시간표 보기</a></li>
 		</ul>
 	</div>
 	
 	<div id="content">
-		<h2>수강신청 확정내역 </h2>
+		<h2> 수업 확인, 삭제 </h2>
 		<table id = "list">
 <form action="getting.jsp" method="post">
 		<table id = "list" border="3" cellspacing="3">
@@ -91,6 +90,9 @@ public String ChangeFormat(String time) {
 				Statement stm = null;
 				Statement stmt = null;
 				String sqlStr = null;
+				int all = 0;
+				int allow = 0;
+	
 				try{
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection( "jdbc:mysql://softwarepractice4.cxchxxx8qkvh.ap-northeast-2.rds.amazonaws.com:3306/course?characterEncoding=UTF-8&serverTimezone=UTC", "lunatk", "Thtlf1210");
@@ -101,7 +103,18 @@ public String ChangeFormat(String time) {
 					st = co.createStatement();
 					
 					rc = stm.executeQuery("SELECT * FROM enroll_list");
-
+	String sm = "select enrolled_credit from enrolled_credit where student_number ='"+ (String)session.getAttribute("student_number")+"'";
+	ResultSet rmet = stmt.executeQuery(sm);
+	while(rmet.next()){
+	  all = rmet.getInt("enrolled_credit");
+	}
+	String s = "select * from student where student_number ='"+ (String)session.getAttribute("student_number")+"'";
+	ResultSet r = stmt.executeQuery(s);
+	while(r.next()){
+		allow = r.getInt("allowed_credit");
+	}
+	out.println("신청 학점" +":"+ all+ "<br />");
+	out.println("허용 학점" +":"+ allow);
 		while(rc.next()) { //rs 를 통해 테이블 객체들의 필드값을 넘겨볼 수 있다.
 					rs = stmt.executeQuery("SELECT * FROM class");
 			while(rs.next()){
@@ -123,13 +136,13 @@ public String ChangeFormat(String time) {
 							if(rc.getString(3).equals(session.getAttribute("student_number"))){
 		%>
 <tr>
-		<td><%=rs.getString(5)%></td>
-		<td><%=rs.getString(6)%></td>
 		<td><%=rs.getString(4)%></td>
-		<td><%=rs.getString(9)%></td>
+		<td><%=rs.getString(5)%></td>
 		<td><%=rs.getString(3)%></td>
 		<td><%=rs.getString(8)%></td>
+		<td><%=rs.getString(2)%></td>
 		<td><%=rs.getString(7)%></td>
+		<td><%=rs.getString(6)%></td>
 		<td><%= start %></td>
 		<td><%= ed %></td>
 		<td><%= day %></td>
